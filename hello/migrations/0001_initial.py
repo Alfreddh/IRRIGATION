@@ -60,7 +60,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('phase', models.CharField(max_length=255)),
-                ('periode_phase', models.DateField()),
+                ('periode_phase', models.IntegerField()),
                 ('date_ajout', models.DateTimeField(auto_now_add=True)),
                 ('culture_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='hello.culture')),
             ],

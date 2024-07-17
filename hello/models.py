@@ -44,7 +44,7 @@ class PhaseCulture(models.Model):
     id = models.AutoField(primary_key=True)
     culture_id = models.ForeignKey(Culture, on_delete=models.CASCADE)
     phase = models.CharField(max_length=255)
-    periode_phase = models.DateField()
+    periode_phase = models.IntegerField()
     date_ajout = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
