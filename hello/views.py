@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import SerreCulture,CapteurHumidite,Culture,CultureSurface,Tanque,PhaseCulture,Users 
-from .forms import CapteurHumiditeForm,CultureSurfaceForm,TanqueForm,PhaseCultureForm,UsersForm 
+from .models import Capteur, SerreCulture,Culture,CultureSurface,Tanque,PhaseCulture
+from .forms import CultureSurfaceForm,TanqueForm,PhaseCultureForm
 from django.views.decorators.http import require_http_methods
-from django.http import JsonResponse
-import json
+
+
 from django.views.decorators.http import require_http_methods
 
 
@@ -86,7 +86,7 @@ def ajouter_tanque(request):
 """Ajouter un capteur"""
 #Voir la liste (Type de capteur, Type de culture/tanque d'eau, humidité/niveau d'eau)
 def liste_capteurs(request):
-    capteurs = CapteurHumidite.objects.all()
+    capteurs = Capteur.objects.all()
     return render(request, 'liste_capteurs.html', {'capteurs': capteurs})
 
 

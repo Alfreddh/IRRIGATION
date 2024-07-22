@@ -1,5 +1,5 @@
 from django import forms
-from .models import Tanque, Users,CapteurHumidite,PhaseCulture
+from .models import Tanque, Users,PhaseCulture
 
 class CultureSurfaceForm(forms.ModelForm):
     nom_culture = forms.CharField(max_length=100)
@@ -20,10 +20,7 @@ class UsersForm(forms.ModelForm):
         model = Users
         fields = ['phone', 'type', 'code']
 
-class CapteurHumiditeForm(forms.ModelForm):
-    class Meta:
-        model = CapteurHumidite
-        fields = ['reference', 'value']
+
 
 class PhaseCultureForm(forms.ModelForm):
     class Meta:
