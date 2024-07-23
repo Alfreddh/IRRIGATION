@@ -1,8 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from .models import Capteur, SerreCulture,Culture,CultureSurface,Tanque,PhaseCulture
 from .forms import CultureSurfaceForm,TanqueForm,PhaseCultureForm
-from django.views.decorators.http import require_http_methods
-
 
 from django.views.decorators.http import require_http_methods
 
@@ -90,41 +88,3 @@ def liste_capteurs(request):
     return render(request, 'liste_capteurs.html', {'capteurs': capteurs})
 
 
-
-"""
-#liste 
-def liste_cultures(request):
-    cultures = Culture.objects.all()
-    return render(request, 'liste_cultures.html', {'cultures': cultures})
-
-    
-#ajouter
-def ajouter_culture(request):
-    if request.method == 'POST':
-        form = CultureForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('liste_cultures')
-    else:
-        form = CultureForm()
-    return render(request, 'ajouter_culture.html', {'form': form})
-
-#modifier
-def modifier_culture(request, pk):
-    culture = get_object_or_404(Culture, pk=pk)
-    data = json.loads(request.body)
-    form = CultureForm(data, instance=culture)
-    if form.is_valid():
-        form.save()
-        return JsonResponse({'message': 'Culture modifiée avec succès'})
-    else:
-        return JsonResponse({'errors': form.errors}, status=400)
-
-#supprimer
-def supprimer_culture(request, pk):
-    culture = get_object_or_404(Culture, pk=pk)
-    culture.delete()
-    return JsonResponse({'message': 'Culture supprimée avec succès'})
-
-
-"""
