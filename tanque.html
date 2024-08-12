@@ -14,6 +14,7 @@
   <!-- select2 -->
   <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -68,7 +69,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h5>Tanks</h5>
+              <h5>Tanques</h5>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -82,20 +83,9 @@
           <div class="row">
             <div class="col-12">
               <div class="card card-primary card-outline card-tabs">
-                <div class="card-header p-0 pt-1 border-bottom-0">
-                  <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Cultures</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Phase de la culture</a>
-                    </li>
-                  </ul>
-                </div>
                 <div class="card-body">
-                  <div class="tab-content" id="custom-tabs-three-tabContent">
-                    <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
-                      <div class="row">
+
+                    <div class="row">
                         <div class="col-12">
                           <div class="card">
                             <div class="card-header d-flex justify-content-between align-items-center">
@@ -107,7 +97,7 @@
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h4 class="modal-title">Nouveu tank</h4>
+                                  <h4 class="modal-title">Nouveau tanque</h4>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -121,26 +111,28 @@
                                         <div class="card card-primary">
                                           <!-- /.card-header -->
                                           <!-- form start -->
-                                          <form id="quickForm">
-                                            <div class="card-body">
-                                              <div class="form-group">
-                                                <label for="nomCulture">Nom de la culture</label>
-                                                <input type="text" name="nomCulture" class="form-control" id="nomCulture" placeholder="Entrer la culture">
-                                              </div>
-                                              <div class="form-group">
-                                                <label for="Nserre">N° Serre</label>
-                                                <input type="text" name="Nserre" class="form-control" id="Nserre" placeholder="Entrer le N° de serre">
-                                              </div>
-                                              <div class="form-group">
-                                                <label for="Superficie">Superficie</label>
-                                                <input type="text" name="Superficie" class="form-control" id="Superficie" placeholder="Entrer la superficie en m²">
-                                              </div>
-                                            </div>
-                                            <!-- /.card-body -->
-                                            <div class="card-footer">
-                                              <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                          </form>
+                                            <form id="quickForm">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label>Type de tanque</label>
+                                                        <select class="form-control select2bs4" style="width: 100%;">
+                                                          <option selected="selected">Eau</option>
+                                                          <option>Fertilisant</option>
+                                                          <option>Mélange</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                    <label for="capacite">Capacité</label>
+                                                    <input type="text" name="capacite" class="form-control" id="capacite" placeholder="Entrer la capacite en L">
+                                                    </div>
+                                        
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                                                </div>
+                                            </form>
                                         </div>
                                         <!-- /.card -->
                                         </div>
@@ -155,13 +147,6 @@
                                   </div><!-- /.container-fluid -->
                                 </section>
 
-                                <!-- <div class="modal-body">
-                                  <p>One fine body&hellip;</p>
-                                </div>
-                                <div class="modal-footer justify-content-between">
-                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                  <button type="button" class="btn btn-primary">Save changes</button>
-                                </div> -->
                               </div>
                               <!-- /.modal-content -->
                             </div>
@@ -173,94 +158,86 @@
                               <table class="table table-head-fixed text-nowrap text-center">
                                 <thead>
                                   <tr>
-                                    <th>Nom de la culture</th>
-                                    <th>Serre</th>
-                                    <th>Superficie</th>
-                                    <th>Action</th>
+                                    <th>Type de tanque</th>
+                                    <th>capacite en litre</th>
                                   </tr>
                                 </thead>
                                 <tbody>
                                   <tr>
-                                    <td>Tomate</td>
-                                    <td>Serre n1</td>
-                                    <td><span class="tag tag-success">200m²</span></td>
+                                    <td>Eau</td>
+                                    <td>10 000</td>
                                     <td>
                                       <button class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
+                                      <button class="btn btn-danger btn-sm delete-btn">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
                                     </td>
                                   </tr>
                                   
                                   <tr> 
-                                    <td>Tomate</td>
-                                    <td>Serre n1</td>
-                                    <td><span class="tag tag-success">200m²</span></td>
+                                    <td>Fertilisant</td>
+                                    <td>5000</td>
                                     <td>
                                       <button class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
+                                      <button class="btn btn-danger btn-sm delete-btn">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td>Tomate</td>
-                                    <td>Serre n1</td>
-                                    <td><span class="tag tag-success">200m²</span></td>
+                                    <td>Eau</td>
+                                    <td>10 000</td>
                                     <td>
                                       <button class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
+                                      <button class="btn btn-danger btn-sm delete-btn">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td>Tomate</td>
-                                    <td>Serre n1</td>
-                                    <td><span class="tag tag-success">200m²</span></td>
+                                    <td>Fertilisant</td>
+                                    <td>5000</td>
                                     <td>
                                       <button class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
+                                      <button class="btn btn-danger btn-sm delete-btn">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td>Tomate</td>
-                                    <td>Serre n1</td>
-                                    <td><span class="tag tag-success">200m²</span></td>
+                                    <td>Eau</td>
+                                    <td>10 000</td>
                                     <td>
                                       <button class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
+                                      <button class="btn btn-danger btn-sm delete-btn">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td>Tomate</td>
-                                    <td>Serre n1</td>
-                                    <td><span class="tag tag-success">200m²</span></td>
+                                    <td>Fertilisant</td>
+                                    <td>10 000</td>
                                     <td>
                                       <button class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
+                                      <button class="btn btn-danger btn-sm delete-btn">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
                                     </td>
@@ -272,216 +249,7 @@
                           </div>
                           <!-- /.card -->
                         </div>
-                      </div>
                     </div>
-
-
-                    <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-                      <div class="row">
-                        <div class="col-12">
-                          <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                              <button button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default-2">
-                                Nouveau
-                            </button>
-                          </div>
-                          <div class="modal fade" id="modal-default-2">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h4 class="modal-title">Nouvelle culture</h4>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <section class="content">
-                                  <div class="container-fluid">
-                                    <div class="row">
-                                      <!-- left column -->
-                                      <div class="col-md-12">
-                                        <!-- jquery validation -->
-                                        <div class="card card-primary">
-                                          <!-- /.card-header -->
-                                          <!-- form start -->
-                                          <form id="quickForm">
-                                            <div class="card-body">
-                                              <div class="form-group">
-                                                <label for="nomCulture">Nom de la culture</label>
-                                                <input type="text" name="nomCulture" class="form-control" id="nomCulture" placeholder="Entrer la culture">
-                                              </div>
-                                              <div class="form-group">
-                                                <label>Phase de la culture </label>
-                                                <div class="select2-purple">
-                                                  <select class="select2" multiple="multiple" data-placeholder="Selectionner une phase"  style="width: 100%;">
-                                                    <option>Phase de germination</option>
-                                                    <option>Phase de maturation</option>
-                                                    <option>Phase de déclin</option>
-                                                    <option>Phase de récolte</option>
-                                                    <option>Phase de mort</option>
-                                                  </select>
-                                                </div>
-                                              </div>
-                                            <!-- /.card-body -->
-                                            <div class="card-footer">
-                                              <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-                                          </form>
-                                        </div>
-                                        <!-- /.card -->
-                                        </div>
-                                      <!--/.col (left) -->
-                                      <!-- right column -->
-                                      <div class="col-md-6">
-                            
-                                      </div>
-                                      <!--/.col (right) -->
-                                    </div>
-                                    <!-- /.row -->
-                                  </div><!-- /.container-fluid -->
-                                </section>
-                                
-                              </div>
-                              <!-- /.modal-content -->
-                            </div>
-                            <!-- /.modal-dialog -->
-                          </div>
-
-                            <!-- /.card-header -->
-                            <div class="card-body table-responsive p-0" style="height: 300px;">
-                              <table class="table table-head-fixed text-nowrap text-center">
-                                <thead>
-                                  <tr>
-                                    <th>Nom de la culture</th>
-                                    <th>Phases de la culture</th>
-                                    <th>Action</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>Tomate</td>
-                                    <td>
-                                      <ul class="list-unstyled">
-                                        <li>example 1</li>
-                                        <li>example 2</li>
-                                        <li>example 3</li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                      </button>
-                                      <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                  
-                                  <tr> 
-                                    <td>Tomate</td>
-                                    <td>
-                                      <ul class="list-unstyled">
-                                        <li>example 1</li>
-                                        <li>example 2</li>
-                                        <li>example 3</li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                      </button>
-                                      <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>Tomate</td>
-                                    <td>
-                                      <ul class="list-unstyled">
-                                        <li>example 1</li>
-                                        <li>example 2</li>
-                                        <li>example 3</li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                      </button>
-                                      <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>Tomate</td>
-                                    <td>
-                                      <ul class="list-unstyled">
-                                        <li>example 1</li>
-                                        <li>example 2</li>
-                                        <li>example 3</li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                      </button>
-                                      <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>Tomate</td>
-                                    <td>
-                                      <ul class="list-unstyled">
-                                        <li>example 1</li>
-                                        <li>example 2</li>
-                                        <li>example 3</li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                      </button>
-                                      <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                  <tr>
-                                    <td>Tomate</td>
-                                    <td>
-                                      <ul class="list-unstyled">
-                                        <li>example 1</li>
-                                        <li>example 2</li>
-                                        <li>example 3</li>
-                                      </ul>
-                                    </td>
-                                    <td>
-                                      <button class="btn btn-warning btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                      </button>
-                                      <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm">
-                                        <i class="fas fa-trash-alt"></i>
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <!-- /.card-body -->
-                          </div>
-                          <!-- /.card -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
           
           <!-- /.row -->
@@ -529,11 +297,20 @@
 
     $(function () {
       //Initialize Select2 Elements
-      $('.select2').select2({
-        tags: true
-      })
+      $('.select2').select2()
       
+      $('.select2bs4').select2({
+      theme: 'bootstrap4'
+        })
     })
+
+    $(document).ready(function() {
+            // Fonction de suppression
+            $('.delete-btn').on('click', function() {
+                // Suppression de la ligne parente (tr)
+                $(this).closest('tr').remove();
+            });
+        });
   </script>
 </body>
 </html>
