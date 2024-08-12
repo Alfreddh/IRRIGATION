@@ -12,6 +12,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
@@ -22,7 +23,7 @@
         <a id="backButton" class="nav-link" href="#" role="button"><i class="fas fa-arrow-left"></i></a>
       </li>
     </ul>
-
+ 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
@@ -100,129 +101,412 @@
     <section class="content">
       <div class="container-fluid">
         <!-- /.row -->
-       
-        <!-- /.row -->
+
         <div class="row">
           <div class="col-12">
-            <div class="card">
-              <div class="card-header d-flex justify-content-between align-items-center">
-                <button type="button" class="btn btn-primary btn-sm">
-                    Nouveau
-                </button>
-            </div>
-            
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
-                  <thead>
-                    <tr>
-                      <th>No</th>
-                      <th>Nom.Culture</th>
-                      <th>Serre</th>
-                      <th>Superficie</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Tomate</td>
-                      <td>Serre n1</td>
-                      <td><span class="tag tag-success">200m²</span></td>
-                      <td>
-                        <button class="btn btn-warning btn-sm">
-                          <i class="fas fa-edit"></i>
-                        </button>
-                        <!-- Icone de suppression -->
-                        <button class="btn btn-danger btn-sm">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    
-                    <tr>
-                      <td>1</td>
-                      <td>Tomate</td>
-                      <td>Serre n1</td>
-                      <td><span class="tag tag-success">200m²</span></td>
-                      <td>
-                        <button class="btn btn-warning btn-sm">
-                          <i class="fas fa-edit"></i>
-                        </button>
-                        <!-- Icone de suppression -->
-                        <button class="btn btn-danger btn-sm">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Tomate</td>
-                      <td>Serre n1</td>
-                      <td><span class="tag tag-success">200m²</span></td>
-                      <td>
-                        <button class="btn btn-warning btn-sm">
-                          <i class="fas fa-edit"></i>
-                        </button>
-                        <!-- Icone de suppression -->
-                        <button class="btn btn-danger btn-sm">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Tomate</td>
-                      <td>Serre n1</td>
-                      <td><span class="tag tag-success">200m²</span></td>
-                      <td>
-                        <button class="btn btn-warning btn-sm">
-                          <i class="fas fa-edit"></i>
-                        </button>
-                        <!-- Icone de suppression -->
-                        <button class="btn btn-danger btn-sm">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Tomate</td>
-                      <td>Serre n1</td>
-                      <td><span class="tag tag-success">200m²</span></td>
-                      <td>
-                        <button class="btn btn-warning btn-sm">
-                          <i class="fas fa-edit"></i>
-                        </button>
-                        <!-- Icone de suppression -->
-                        <button class="btn btn-danger btn-sm">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Tomate</td>
-                      <td>Serre n1</td>
-                      <td><span class="tag tag-success">200m²</span></td>
-                      <td>
-                        <button class="btn btn-warning btn-sm">
-                          <i class="fas fa-edit"></i>
-                        </button>
-                        <!-- Icone de suppression -->
-                        <button class="btn btn-danger btn-sm">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+            <div class="card card-primary card-outline card-tabs">
+              <div class="card-header p-0 pt-1 border-bottom-0">
+                <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                  <li class="nav-item">
+                    <a class="nav-link active" id="custom-tabs-three-home-tab" data-toggle="pill" href="#custom-tabs-three-home" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Cultures</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="custom-tabs-three-profile-tab" data-toggle="pill" href="#custom-tabs-three-profile" role="tab" aria-controls="custom-tabs-three-profile" aria-selected="false">Phase de la culture</a>
+                  </li>
+                </ul>
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
+              <div class="card-body">
+                <div class="tab-content" id="custom-tabs-three-tabContent">
+                  <div class="tab-pane fade show active" id="custom-tabs-three-home" role="tabpanel" aria-labelledby="custom-tabs-three-home-tab">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header d-flex justify-content-between align-items-center">
+                            <button button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                Nouveau
+                            </button>
+                        </div>
+                        <div class="modal fade" id="modal-default">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Nouvelle culture</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <section class="content">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <!-- left column -->
+                                    <div class="col-md-12">
+                                      <!-- jquery validation -->
+                                      <div class="card card-primary">
+                                        <!-- /.card-header -->
+                                        <!-- form start -->
+                                        <form id="quickForm">
+                                          <div class="card-body">
+                                            <div class="form-group">
+                                              <label for="nomCulture">Nom de la culture</label>
+                                              <input type="text" name="nomCulture" class="form-control" id="nomCulture" placeholder="Entrer la culture">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="Nserre">N° Serre</label>
+                                              <input type="text" name="Nserre" class="form-control" id="Nserre" placeholder="Entrer le N° de serre">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="Superficie">Superficie</label>
+                                              <input type="text" name="Superficie" class="form-control" id="Superficie" placeholder="Entrer la superficie en m²">
+                                            </div>
+                                          </div>
+                                          <!-- /.card-body -->
+                                          <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                          </div>
+                                        </form>
+                                      </div>
+                                      <!-- /.card -->
+                                      </div>
+                                    <!--/.col (left) -->
+                                    <!-- right column -->
+                                    <div class="col-md-6">
+                          
+                                    </div>
+                                    <!--/.col (right) -->
+                                  </div>
+                                  <!-- /.row -->
+                                </div><!-- /.container-fluid -->
+                              </section>
+
+                              <!-- <div class="modal-body">
+                                <p>One fine body&hellip;</p>
+                              </div>
+                              <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div> -->
+                            </div>
+                            <!-- /.modal-content -->
+                          </div>
+                          <!-- /.modal-dialog -->
+                        </div>
+                        
+                          <!-- /.card-header -->
+                          <div class="card-body table-responsive p-0" style="height: 300px;">
+                            <table class="table table-head-fixed text-nowrap text-center">
+                              <thead>
+                                <tr>
+                                  <th>Nom.Culture</th>
+                                  <th>Serre</th>
+                                  <th>Superficie</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>Serre n1</td>
+                                  <td><span class="tag tag-success">200m²</span></td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                
+                                <tr> 
+                                  <td>Tomate</td>
+                                  <td>Serre n1</td>
+                                  <td><span class="tag tag-success">200m²</span></td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>Serre n1</td>
+                                  <td><span class="tag tag-success">200m²</span></td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>Serre n1</td>
+                                  <td><span class="tag tag-success">200m²</span></td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>Serre n1</td>
+                                  <td><span class="tag tag-success">200m²</span></td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>Serre n1</td>
+                                  <td><span class="tag tag-success">200m²</span></td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-header d-flex justify-content-between align-items-center">
+                            <button button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default-2">
+                              Nouveau
+                          </button>
+                        </div>
+                        <div class="modal fade" id="modal-default-2">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h4 class="modal-title">Nouvelle culture</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <section class="content">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <!-- left column -->
+                                    <div class="col-md-12">
+                                      <!-- jquery validation -->
+                                      <div class="card card-primary">
+                                        <!-- /.card-header -->
+                                        <!-- form start -->
+                                        <form id="quickForm">
+                                          <div class="card-body">
+                                            <div class="form-group">
+                                              <label for="nomCulture">Nom de la culture</label>
+                                              <input type="text" name="nomCulture" class="form-control" id="nomCulture" placeholder="Entrer la culture">
+                                            </div>
+                                            <div class="form-group">
+                                              <label for="Nserre">N° Serre</label>
+                                              <input type="text" name="Nserre" class="form-control" id="Nserre" placeholder="Entrer le N° de serre">
+                                            </div>
+                                          </div>
+                                          <!-- /.card-body -->
+                                          <div class="card-footer">
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                          </div>
+                                        </form>
+                                      </div>
+                                      <!-- /.card -->
+                                      </div>
+                                    <!--/.col (left) -->
+                                    <!-- right column -->
+                                    <div class="col-md-6">
+                          
+                                    </div>
+                                    <!--/.col (right) -->
+                                  </div>
+                                  <!-- /.row -->
+                                </div><!-- /.container-fluid -->
+                              </section>
+
+                              <!-- <div class="modal-body">
+                                <p>One fine body&hellip;</p>
+                              </div>
+                              <div class="modal-footer justify-content-between">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div> -->
+                            </div>
+                            <!-- /.modal-content -->
+                          </div>
+                          <!-- /.modal-dialog -->
+                        </div>
+
+                          <!-- /.card-header -->
+                          <div class="card-body table-responsive p-0" style="height: 300px;">
+                            <table class="table table-head-fixed text-nowrap text-center">
+                              <thead>
+                                <tr>
+                                  <th>Nom.Culture</th>
+                                  <th>Phases de la culture</th>
+                                  <th>Action</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>
+                                    <ul class="list-unstyled">
+                                      <li>example 1</li>
+                                      <li>example 2</li>
+                                      <li>example 3</li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                
+                                <tr> 
+                                  <td>Tomate</td>
+                                  <td>
+                                    <ul class="list-unstyled">
+                                      <li>example 1</li>
+                                      <li>example 2</li>
+                                      <li>example 3</li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>
+                                    <ul class="list-unstyled">
+                                      <li>example 1</li>
+                                      <li>example 2</li>
+                                      <li>example 3</li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>
+                                    <ul class="list-unstyled">
+                                      <li>example 1</li>
+                                      <li>example 2</li>
+                                      <li>example 3</li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>
+                                    <ul class="list-unstyled">
+                                      <li>example 1</li>
+                                      <li>example 2</li>
+                                      <li>example 3</li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>Tomate</td>
+                                  <td>
+                                    <ul class="list-unstyled">
+                                      <li>example 1</li>
+                                      <li>example 2</li>
+                                      <li>example 3</li>
+                                    </ul>
+                                  </td>
+                                  <td>
+                                    <button class="btn btn-warning btn-sm">
+                                      <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Icone de suppression -->
+                                    <button class="btn btn-danger btn-sm">
+                                      <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                          <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
         <!-- /.row -->
        
         <!-- /.row -->
@@ -246,6 +530,8 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
+
+
 <!-- ./wrapper -->
 
 <!-- jQuery -->
