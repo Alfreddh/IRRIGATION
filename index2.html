@@ -65,33 +65,71 @@
   <!-- /.navbar -->
 
   <aside class="main-sidebar sidebar-light-primary elevation-4">
-    <!-- Brand Logo -->
-    <!-- <a href="../../index3.html" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a> -->
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
       <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          
-        </ul>
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            
+            <div class="user-panel mt-3 pb-3 d-flex">
+              <li class="nav-item">
+                  <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-tachometer-alt nav-icon"></i>
+                      <p>Tableau de bord</p>
+                  </a>
+              </li>
+            </div>
+              
+            <div class="user-panel mt-3 pb-3 d-flex">              
+              <li class="nav-item">
+                  <a href="user.html" class="nav-link">
+                      <i class="fas fa-users nav-icon"></i>
+                      <p>Utilisateur</p>
+                  </a>
+              </li>
+            </div>
+
+            <div class="user-panel mt-3 pb-3 d-flex">              
+              <li class="nav-item">
+                  <a href="cultures.html" class="nav-link">
+                      <i class="fas fa-seedling nav-icon"></i>
+                      <p>Culture</p>
+                  </a>
+              </li>
+            </div>
+
+            <div class="user-panel mt-3 pb-3 d-flex">              
+              <li class="nav-item">
+                  <a href="capteur.html" class="nav-link">
+                      <i class="fas fa-thermometer-half nav-icon"></i>
+                      <p>Capteur</p>
+                  </a>
+              </li>
+            </div>
+
+            <div class="user-panel mt-3 pb-3 d-flex">             
+              <li class="nav-item">
+                  <a href="tanque.html" class="nav-link">
+                      <i class="fas fa-tint nav-icon"></i>
+                      <p>Tanques</p>
+                  </a>
+              </li>
+            </div>
+
+            <div class="user-panel mt-3 pb-3 d-flex">             
+              <li class="nav-item">
+                  <a href="logs.html" class="nav-link">
+                      <i class="fas fa-file-alt nav-icon"></i>
+                      <p>Logs</p>
+                  </a>
+              </li>
+            </div>         
+          </ul>
       </nav>
-      <!-- /.sidebar-menu -->
-    </div>
+  </div>
+  
     <!-- /.sidebar -->
+  
   </aside>
 
   <!-- Main Sidebar Container -->
@@ -104,29 +142,21 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        <div class="col-sm-6 p-4">
+          <h5>Tableau de bord</h5>
+        </div>
         <!-- Small boxes (Stat box) -->
         <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h5>Tableau de bord</h5>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="index3.html" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
+
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-success">
-              <div class="inner">
+              <div class="inner p-3">
                 <h5>Tanques</h5>
               </div>
               <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+                <i class="fas fa-tint"></i>
               </div>
               <a href="tanque.html" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -135,11 +165,11 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
-              <div class="inner">
+              <div class="inner p-3">
                 <h5 class="text-white">Cultures</h5>
               </div>
               <div class="icon">
-                <i class="ion ion-person-add"></i>
+                <i class="fas fa-leaf"></i>
               </div>
               <a href="cultures.html" class="small-box-footer"><i class="fas fa-arrow-circle-right text-white"></i></a>
             </div>
@@ -148,16 +178,182 @@
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-danger">
-              <div class="inner">
+              <div class="inner p-3">
                 <h5>Capteurs</h5>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="fas fa-thermometer-full"></i>
               </div>
-              <a href="#" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
+              <a href="capteur.html" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
+        </div>
+        <!-- /.row -->
+                 <div class="row">
+          <div class="col-md-6">
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Phase d’évolution des cultures</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="far fa-chart-bar"></i>
+                  Humidité du sol
+                </h3>
+
+                <div class="card-tools">
+                  Temps réel
+                  <div class="btn-group" id="realtime" data-toggle="btn-toggle">
+                    <button type="button" class="btn btn-default btn-sm active" data-toggle="on">Oui</button>
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="off">Non</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div id="interactive" style="height: 300px;"></div>
+              </div>
+              <!-- /.card-body-->
+            </div>
+            
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Evolution des quantités d'eaux </h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- DONUT CHART -->
+           
+            <!-- /.card -->
+
+            <!-- PIE CHART -->
+            <div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Cultures</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col (LEFT) -->
+          <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">Donut Chart</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <div class="col-md-6">
+            <!-- LINE CHART -->
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">Line Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            <!-- AREA CHART -->
+
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Area Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- BAR CHART -->
+            
+            <!-- /.card -->
+
+            <!-- STACKED BAR CHART -->
+           
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col (RIGHT) -->
         </div>
         <!-- /.row -->
         <!-- Main row -->
@@ -166,12 +362,9 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer text-center" style="padding: 0.5rem 1rem;">
+  <footer class="main-footer text-center" style="padding: 0.4rem 1rem;">
     <strong>Copyright &copy; 2024 <a href="https://green-tech-innovation.com">Green Tech Innovation</a>.</strong>
     Tous droits réservés.
-    <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.2.0
-    </div>
 </footer>
 
 
