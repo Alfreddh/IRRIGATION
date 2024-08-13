@@ -23,6 +23,10 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
         <li class="nav-item">
           <a id="backButton" class="nav-link" href="#" role="button"><i class="fas fa-arrow-left"></i></a>
         </li>
@@ -30,37 +34,52 @@
   
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <!-- Navbar Search -->
+
+        <!-- Navbar real-time Hour -->
         <li class="nav-item">
-          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-            <i class="fas fa-search"></i>
-          </a>
-          <div class="navbar-search-block">
-            <form class="form-inline">
-              <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                  <button class="btn btn-navbar" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
+            <span id="real-time-clock" class="nav-link text-bold"></span>
+        </li>
+
+        <!-- Navbar battery -->
+        <li class="nav-item">
+          <div class="text-right text-secondary nav-link">
+            <i id="battery-icon" class="fas fa-battery-full"></i>
+            <span id="battery-percentage">100%</span>
           </div>
         </li>
 
-        <!-- Messages Dropdown Menu -->
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
       </ul>
     </nav>
+
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
+      <!-- Brand Logo -->
+      <!-- <a href="../../index3.html" class="brand-link">
+        <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">AdminLTE 3</span>
+      </a> -->
+  
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">Alexander Pierce</a>
+          </div>
+        </div>
+  
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -69,7 +88,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h5>Tanques</h5>
+              <h3>Tanques</h3>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -124,7 +143,7 @@
 
                                                     <div class="form-group">
                                                     <label for="capacite">Capacité</label>
-                                                    <input type="text" name="capacite" class="form-control" id="capacite" placeholder="Entrer la capacite en L">
+                                                    <input type="number" name="capacite" class="form-control" id="capacite" placeholder="Entrer la capacite en L">
                                                     </div>
                                         
                                                 </div>
@@ -153,6 +172,66 @@
                             <!-- /.modal-dialog -->
                           </div>
                           
+                          <div class="modal fade" id="modal-modif">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Modifier les informations du tanque</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                            <form id="quickForm">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                        <label>Type de tanque</label>
+                                                        <select class="form-control select2bs4" style="width: 100%;">
+                                                          <option selected="selected">Eau</option>
+                                                          <option>Fertilisant</option>
+                                                          <option>Mélange</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                    <label for="capacite">Capacité</label>
+                                                    <input type="number" name="capacite" class="form-control" id="capacite" placeholder="Entrer la capacite en L">
+                                                    </div>
+                                        
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0" style="height: 300px;">
                               <table class="table table-head-fixed text-nowrap text-center">
@@ -165,15 +244,38 @@
                                 <tbody>
                                   <tr>
                                     <td>Eau</td>
-                                    <td>10 000</td>
+                                    <td>30 000</td>
                                     <td>
-                                      <button class="btn btn-warning btn-sm">
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm delete-btn">
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous supprimer cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Supprimer</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                      
                                     </td>
                                   </tr>
                                   
@@ -181,63 +283,72 @@
                                     <td>Fertilisant</td>
                                     <td>5000</td>
                                     <td>
-                                      <button class="btn btn-warning btn-sm">
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm delete-btn">
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
+                                      
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>Eau</td>
                                     <td>10 000</td>
                                     <td>
-                                      <button class="btn btn-warning btn-sm">
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm delete-btn">
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
+                                      
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>Fertilisant</td>
                                     <td>5000</td>
                                     <td>
-                                      <button class="btn btn-warning btn-sm">
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm delete-btn">
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
+                                      
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>Eau</td>
                                     <td>10 000</td>
                                     <td>
-                                      <button class="btn btn-warning btn-sm">
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm delete-btn">
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
+                                      
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>Fertilisant</td>
                                     <td>10 000</td>
                                     <td>
-                                      <button class="btn btn-warning btn-sm">
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
                                         <i class="fas fa-edit"></i>
                                       </button>
                                       <!-- Icone de suppression -->
-                                      <button class="btn btn-danger btn-sm delete-btn">
+                                      <button class="btn btn-danger btn-sm delete-btn" type="button" data-toggle="modal" data-target="#modal-delete">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
                                     </td>
@@ -289,28 +400,13 @@
   <script src="dist/js/demo.js"></script>
   <!-- Select2 -->
   <script src="../../plugins/select2/js/select2.full.min.js"></script>
+  <!-- Custom app js code (time|battery|remove function) -->
+  <script src="dist/js/app.js"></script>
   <script>
     document.getElementById("backButton").addEventListener("click", function(event) {
         event.preventDefault(); // Empêche le comportement par défaut du lien
         history.back(); // Retourne à la page précédente
     });
-
-    $(function () {
-      //Initialize Select2 Elements
-      $('.select2').select2()
-      
-      $('.select2bs4').select2({
-      theme: 'bootstrap4'
-        })
-    })
-
-    $(document).ready(function() {
-            // Fonction de suppression
-            $('.delete-btn').on('click', function() {
-                // Suppression de la ligne parente (tr)
-                $(this).closest('tr').remove();
-            });
-        });
   </script>
 </body>
 </html>
