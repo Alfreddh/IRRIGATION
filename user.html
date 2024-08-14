@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GTI</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="padding: 0rem 1rem;">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item">
+          <a id="backButton" class="nav-link" href="#" role="button"><i class="fas fa-arrow-left"></i></a>
+        </li>
+      </ul>
+  
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+
+        <!-- Navbar real-time Hour -->
+        <li class="nav-item">
+            <span id="real-time-clock" class="nav-link text-bold"></span>
+        </li>
+
+        <!-- Navbar battery -->
+        <li class="nav-item">
+          <div class="text-right text-secondary nav-link">
+            <i id="battery-icon" class="fas fa-battery-full"></i>
+            <span id="battery-percentage">100%</span>
+          </div>
+        </li>
+
+      </ul>
+    </nav>
+
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              
+              <div class="user-panel mt-3 pb-3 d-flex">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                      <i class="fas fa-tachometer-alt nav-icon"></i>
+                        <p>Tableau de bord</p>
+                    </a>
+                </li>
+              </div>
+                
+              <div class="user-panel mt-3 pb-3 d-flex">              
+                <li class="nav-item">
+                    <a href="user.html" class="nav-link active">
+                        <i class="fas fa-users nav-icon"></i>
+                        <p>Utilisateur</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">              
+                <li class="nav-item">
+                    <a href="cultures.html" class="nav-link">
+                        <i class="fas fa-seedling nav-icon"></i>
+                        <p>Culture</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">              
+                <li class="nav-item">
+                    <a href="capteur.html" class="nav-link">
+                        <i class="fas fa-thermometer-half nav-icon"></i>
+                        <p>Capteur</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">             
+                <li class="nav-item">
+                    <a href="tanque.html" class="nav-link">
+                        <i class="fas fa-tint nav-icon"></i>
+                        <p>Tanques</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">             
+                <li class="nav-item">
+                    <a href="logs.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <p>Logs</p>
+                    </a>
+                </li>
+              </div>         
+            </ul>
+        </nav>
+    </div>
+    
+      <!-- /.sidebar -->
+    
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header" style="padding: 0.5rem 1rem;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <h5>Utilisateur</h5>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <!-- /.row -->
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card card-primary card-outline card-tabs">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                              <button button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                  Nouveau
+                              </button>
+                          </div>
+                          <div class="modal fade" id="modal-default">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Nouvel Utilisateur</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                            <form id="quickForm">
+                                                <div class="card-body">
+                                                    <div class="form-group">
+                                                    <label for="nom">Nom</label>
+                                                    <input type="text" name="nom" class="form-control" id="nom" placeholder="Entrer le nom">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                    <label for="telephone">Numéro de télephone</label>
+                                                    <input type="number" name="telephone" class="form-control" id="telephone" placeholder="Entrer le numéro de téléphone">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                    <label for="password">Mot de passe</label>
+                                                    <input type="text" name="password" class="form-control" id="password" placeholder="Entrer le mot de passe">
+                                                    </div>
+                                        
+                                                </div>
+                                                <!-- /.card-body -->
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+                          
+                          <div class="modal fade" id="modal-modif">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Modifier les informations de l'utilisateur</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                          <form id="quickForm">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                <label for="nom">Nom</label>
+                                                <input type="text" name="nom" class="form-control" id="nom" placeholder="Entrer le nom">
+                                                </div>
+
+                                                <div class="form-group">
+                                                <label for="telephone">Numéro de télephone</label>
+                                                <input type="number" name="telephone" class="form-control" id="telephone" placeholder="Entrer le numéro de téléphone">
+                                                </div>
+
+                                                <div class="form-group">
+                                                <label for="password">Mot de passe</label>
+                                                <input type="text" name="password" class="form-control" id="password" placeholder="Entrer le mot de passe">
+                                                </div>
+                                    
+                                            </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                              <table class="table table-head-fixed text-nowrap text-center">
+                                <thead>
+                                  <tr>
+                                    <th>Nom</th>
+                                    <th>Numéro de téléphone </th>
+                                    <th>Mot de passse </th>
+                                    <th>Action </th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>John Doe</td>
+                                    <td>96699669</td>
+                                    <td>UserPassw0rd@</td>
+                                    <td>
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous supprimer cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Supprimer</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                      
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>John Doe</td>
+                                    <td>97799779</td>
+                                    <td>UserPassw1rd@</td>
+                                    <td>
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>John Doe</td>
+                                    <td>92299229</td>
+                                    <td>UserPassw2rd@</td>
+                                    <td>
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>John Doe</td>
+                                    <td>96699669</td>
+                                    <td>UserPassw0rd@</td>
+                                    <td>
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>John Doe</td>
+                                    <td>96699669</td>
+                                    <td>UserPassw0rd@</td>
+                                    <td>
+                                      <!-- Icone de modification -->
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      
+                                    </td>
+                                  </tr>
+                                  
+                                </tbody>
+                              </table>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                    </div>
+                </div>
+          
+          <!-- /.row -->
+        
+          <!-- /.row -->
+          
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer text-center" style="padding: 0.4rem 1rem;">
+      <strong>Copyright &copy; 2024 <a href="https://green-tech-innovation.com">Green Tech Innovation</a>.</strong>
+      Tous droits réservés.
+  </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+
+
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
+  <!-- Select2 -->
+  <script src="../../plugins/select2/js/select2.full.min.js"></script>
+  <!-- Custom app js code (time|battery|remove function) -->
+  <script src="dist/js/app.js"></script>
+  <script>
+    document.getElementById("backButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+        history.back(); // Retourne à la page précédente
+    });
+  </script>
+</body>
+</html>
