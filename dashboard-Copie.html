@@ -126,60 +126,16 @@
         </div>
       </div><!-- /.container-fluid -->
     </section>
-
+    
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-
-        <div class="row">
-
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner p-3">
-                <h5>Tanques</h5>
-              </div>
-              <div class="icon">
-                <i class="fas fa-tint"></i>
-              </div>
-              <a href="tanque.html" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner p-3">
-                <h5 class="text-white">Cultures</h5>
-              </div>
-              <div class="icon">
-                <i class="fas fa-leaf"></i>
-              </div>
-              <a href="cultures.html" class="small-box-footer"><i class="fas fa-arrow-circle-right text-white"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner p-3">
-                <h5>Capteurs</h5>
-              </div>
-              <div class="icon">
-                <i class="fas fa-thermometer-full"></i>
-              </div>
-              <a href="capteur.html" class="small-box-footer"><i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-
         <div class="row">
           <div class="col-md-6">
-            <div class="card card-success">
+            <!-- AREA CHART -->
+            <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Phase d’évolution des cultures</h3>
+                <h3 class="card-title">Area Chart</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -192,36 +148,17 @@
               </div>
               <div class="card-body">
                 <div class="chart">
-                  <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <div class="card card-primary card-outline">
-              <div class="card-header">
-                <h3 class="card-title">
-                  <i class="far fa-chart-bar"></i>
-                  Humidité du sol
-                </h3>
 
-                <div class="card-tools">
-                  Temps réel
-                  <div class="btn-group" id="realtime" data-toggle="btn-toggle">
-                    <button type="button" class="btn btn-default btn-sm active" data-toggle="on">Oui</button>
-                    <button type="button" class="btn btn-default btn-sm" data-toggle="off">Non</button>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div id="interactive" style="height: 300px;"></div>
-              </div>
-              <!-- /.card-body-->
-            </div>
-            
-            <div class="card card-success">
+            <!-- DONUT CHART -->
+            <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Evolution des quantités d'eaux </h3>
+                <h3 class="card-title">Donut Chart</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -233,20 +170,16 @@
                 </div>
               </div>
               <div class="card-body">
-                <div class="chart">
-                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                </div>
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- DONUT CHART -->
-           
             <!-- /.card -->
 
             <!-- PIE CHART -->
             <div class="card card-danger">
               <div class="card-header">
-                <h3 class="card-title">Cultures</h3>
+                <h3 class="card-title">Pie Chart</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -266,24 +199,6 @@
 
           </div>
           <!-- /.col (LEFT) -->
-          <div class="card card-danger">
-            <div class="card-header">
-              <h3 class="card-title">Donut Chart</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                  <i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-            <div class="card-body">
-              <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-            </div>
-            <!-- /.card-body -->
-          </div>
           <div class="col-md-6">
             <!-- LINE CHART -->
             <div class="card card-info">
@@ -307,11 +222,11 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            <!-- AREA CHART -->
 
-            <div class="card card-primary">
+            <!-- BAR CHART -->
+            <div class="card card-success">
               <div class="card-header">
-                <h3 class="card-title">Area Chart</h3>
+                <h3 class="card-title">Bar Chart</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -324,17 +239,34 @@
               </div>
               <div class="card-body">
                 <div class="chart">
-                  <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                  <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- BAR CHART -->
-            
             <!-- /.card -->
 
             <!-- STACKED BAR CHART -->
-           
+            <div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Stacked Bar Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            </div>
             <!-- /.card -->
 
           </div>
@@ -343,7 +275,7 @@
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
+    <!-- /.content -->    
   </div>
 
   
