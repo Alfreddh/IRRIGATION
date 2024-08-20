@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GTI</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- select2 -->
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="padding: 0rem 1rem;">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item">
+          <a id="backButton" class="nav-link" href="#" role="button"><i class="fas fa-arrow-left"></i></a>
+        </li>
+      </ul>
+  
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+          <!-- Navbar real-time Hour -->
+        <li class="nav-item">
+            <span id="real-time-clock" class="nav-link text-bold"></span>
+        </li>
+
+        <!-- Navbar battery -->
+        <li class="nav-item">
+          <div class="text-right text-secondary nav-link">
+            <i id="battery-icon" class="fas fa-battery-full"></i>
+            <span id="battery-percentage">100%</span>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <aside class="main-sidebar sidebar-light-primary elevation-4">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              
+              <div class="user-panel mt-3 pb-3 d-flex">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                      <i class="fas fa-tachometer-alt nav-icon"></i>
+                        <p>Tableau de bord</p>
+                    </a>
+                </li>
+              </div>
+                
+              <div class="user-panel mt-3 pb-3 d-flex">              
+                <li class="nav-item">
+                    <a href="user.html" class="nav-link">
+                        <i class="fas fa-users nav-icon"></i>
+                        <p>Utilisateur</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">              
+                <li class="nav-item">
+                    <a href="cultures.html" class="nav-link">
+                        <i class="fas fa-seedling nav-icon"></i>
+                        <p>Culture</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">              
+                <li class="nav-item">
+                    <a href="capteur.html" class="nav-link active">
+                        <i class="fas fa-thermometer-half nav-icon"></i>
+                        <p>Capteurs et Actionneurs</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">             
+                <li class="nav-item">
+                    <a href="tanque.html" class="nav-link">
+                        <i class="fas fa-tint nav-icon"></i>
+                        <p>Tanques</p>
+                    </a>
+                </li>
+              </div>
+  
+              <div class="user-panel mt-3 pb-3 d-flex">             
+                <li class="nav-item">
+                    <a href="logs.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <p>Logs</p>
+                    </a>
+                </li>
+              </div>         
+            </ul>
+        </nav>
+    </div>
+    
+      <!-- /.sidebar -->
+    
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header" style="padding: 0.5rem 1rem;">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <h5>Capteurs et Actionneurs</h5>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <!-- /.row -->
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card card-primary card-outline card-tabs">
+                <div class="card-header p-0 pt-1 border-bottom-0">
+                  <ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="custom-tabs-three-capteurs-tab" data-toggle="pill" href="#custom-tabs-three-capteurs" role="tab" aria-controls="custom-tabs-three-capteurs" aria-selected="true">Capteurs et Actionneurs</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="custom-tabs-three-cateurs-serre-tab" data-toggle="pill" href="#custom-tabs-three-cateurs-serre" role="tab" aria-controls="custom-tabs-three-cateurs|serre" aria-selected="false">Capteurs|Serre</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="custom-tabs-three-cateurs-tanque-tab" data-toggle="pill" href="#custom-tabs-three-cateurs-tanque" role="tab" aria-controls="custom-tabs-three-cateurs|serre" aria-selected="false">Capteurs|Tanque</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <div class="tab-content" id="custom-tabs-three-tabContent">
+                    <div class="tab-pane fade show active" id="custom-tabs-three-capteurs" role="tabpanel" aria-labelledby="custom-tabs-three-capteurs-tab">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                              <button button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
+                                  Nouveau
+                              </button>
+                          </div>
+                          <div class="modal fade" id="modal-default" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Nouveau capteur/actionneur</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                          <form id="quickForm">
+                                            <div class="card-body">
+                                              <div class="form-group">
+                                                <label for="Referencecapteur">Reference du capteur/actionneur</label>
+                                                <input type="text" name="Referencecapteur" class="form-control" id="Referencecapteur" placeholder="Entrer le Reference du capteur">
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Type</label>
+                                                <select class="form-control select2bs4" style="width: 100%;">
+                                                  <option selected="selected">Humidité</option>
+                                                  <option>Electrovanne</option>
+                                                  <option>Pompe</option>
+                                                  <option>Niveau</option>
+                                                </select>
+                                            </div>
+                                            </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                              <button type="submit" class="btn btn-default">Annuler</button>
+                                              <button type="submit" class="btn btn-primary float-right">Envoyer</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                                <!-- <div class="modal-body">
+                                  <p>One fine body&hellip;</p>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> -->
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+
+                          <!-- modification form modal -->
+                          <div class="modal fade" id="modal-modif" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Modification du capteur</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                          <form id="quickForm">
+                                            <div class="card-body">
+                                              <div class="form-group">
+                                                <label for="Referencecapteur">Reference du capteur/actionneur</label>
+                                                <input type="text" name="Referencecapteur" class="form-control" id="Referencecapteur" placeholder="Capteur001">
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Type</label>
+                                                <select class="form-control select2bs4" style="width: 100%;">
+                                                  <option selected="selected">Humidité</option>
+                                                  <option>Electrovanne</option>
+                                                  <option>Pompe</option>
+                                                  <option>Niveau</option>
+                                                </select>
+                                            </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                              <button type="submit" class="btn btn-default">Annuler</button>
+                                              <button type="submit" class="btn btn-primary float-right">Envoyer</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                                <!-- <div class="modal-body">
+                                  <p>One fine body&hellip;</p>
+                                </div>
+                                <div class="modal-footer justify-content-between">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div> -->
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                              <table class="table table-head-fixed text-nowrap text-center">
+                                <thead>
+                                  <tr>
+                                    <th>Capteur ou Actionneurs</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Capteur001</td>
+                                    <td>Humidité</td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Capteur002</td>
+                                    <td>Niveau</td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Capteur003</td>
+                                    <td>Niveau</td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Capteur004</td>
+                                    <td>Niveau</td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Capteur001</td>
+                                    <td>Humidité</td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="custom-tabs-three-cateurs-serre" role="tabpanel" aria-labelledby="custom-tabs-three-cateurs-serre-tab">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                              <button button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default-2">
+                                Nouveau
+                            </button>
+                          </div>
+                          <div class="modal fade" id="modal-default-2" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Nouveau Capteur|Serre</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                          <form id="quickForm">
+                                            <div class="card-body">
+                                              <div class="form-group">
+                                                <div class="form-group">
+                                                  <label>Reference de la Serre</label>
+                                                  <select class="form-control select2bs4" style="width: 100%;">
+                                                    <option selected="selected">Serre001</option>
+                                                    <option>Serre002</option>
+                                                    <option>Serre003</option>
+                                                  </select>
+                                              </div>
+                                              <label>Capteurs|Serre</label>
+                                              <div class="select2-purple">
+                                                <select class="select2" multiple="multiple" data-placeholder="Selectionner une phase"  style="width: 100%;">
+                                                  <option>Capteur001</option>
+                                                  <option>Capteur002</option>
+                                                  <option>Capteur003</option>
+                                                  <option>Capteur004</option>
+                                                  <option>Capteur005</option>
+                                                </select>
+                                              </div>
+                                              </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                              <button type="submit" class="btn btn-default">Annuler</button>
+                                              <button type="submit" class="btn btn-primary float-right">Envoyer</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+
+                          <div class="modal fade" id="modal-modif-2" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Modification du Capteur|Serre</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                          <form id="quickForm">
+                                            <div class="card-body">
+                                              <div class="form-group">
+                                                <div class="form-group">
+                                                  <label>Reference de la Serre</label>
+                                                  <select class="form-control select2bs4" style="width: 100%;">
+                                                    <option selected="selected">Serre001</option>
+                                                    <option>Serre002</option>
+                                                    <option>Serre003</option>
+                                                  </select>
+                                              </div>
+                                              <label>Capteurs|Serre</label>
+                                              <div class="select2-purple">
+                                                <select class="select2" multiple="multiple" data-placeholder="Selectionner une phase"  style="width: 100%;">
+                                                  <option selected="select">Capteur001</option>
+                                                  <option selected="select">Capteur002</option>
+                                                  <option>Capteur003</option>
+                                                  <option>Capteur004</option>
+                                                  <option>Capteur005</option>
+                                                </select>
+                                              </div>
+                                              </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                              <button type="submit" class="btn btn-default">Annuler</button>
+                                              <button type="submit" class="btn btn-primary float-right">Envoyer</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+
+
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                              <table class="table table-head-fixed text-nowrap text-center">
+                                <thead>
+                                  <tr>
+                                    <th>Reference de la serre</th>
+                                    <th>Capteurs</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Serre001</td>
+                                    <td>
+                                      <select multiple>
+                                        <option value="Capteur001">Capteur001</option>
+                                        <option value="Capteur002">Capteur002</option>
+                                        <option value="Capteur001">Capteur003</option>
+                                        <option value="Capteur002">Capteur004</option>
+                                        <option value="Capteur001">Capteur005</option>
+                                        <option value="Capteur002">Capteur006</option>
+                                      </select>
+                                      
+                                      
+                                    </td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif-2">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete-1">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete-1" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Serre002</td>
+                                    <td>
+                                      <select multiple>
+                                        <option value="Capteur001">Capteur001</option>
+                                        <option value="Capteur002">Capteur002</option>
+                                        <option value="Capteur001">Capteur005</option>
+                                        <option value="Capteur002">Capteur006</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif-2">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete-1">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete-1" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Serre003</td>
+                                    <td>
+                                      <select multiple>
+                                        <option value="Capteur001">Capteur005</option>
+                                        <option value="Capteur002">Capteur006</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif-2">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete-1">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete-1" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="custom-tabs-three-cateurs-tanque" role="tabpanel" aria-labelledby="custom-tabs-three-cateurs-tanque-tab">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                              <button button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default-tanque-2">
+                                Nouveau
+                            </button>
+                          </div>
+                          <div class="modal fade" id="modal-default-tanque-2" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Nouveau Capteur|Tanque</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                          <form id="quickForm">
+                                            <div class="card-body">
+                                              <div class="form-group">
+                                          
+                                                <div class="form-group">
+                                                  <label>Reference du Tanque</label>
+                                                  <select class="form-control select2bs4" style="width: 100%;">
+                                                    <option selected="selected">Tanque001</option>
+                                                    <option>Tanque002</option>
+                                                    <option>Tanque003</option>
+                                                  </select>
+                                              </div>
+                                              <label>Capteurs|Tanque</label>
+                                              <div class="select2-purple">
+                                                <select class="select2" multiple="multiple" data-placeholder="Selectionner une phase"  style="width: 100%;">
+                                                  <option>Capteur001</option>
+                                                  <option>Capteur002</option>
+                                                  <option>Capteur003</option>
+                                                  <option>Capteur004</option>
+                                                  <option>Capteur005</option>
+                                                </select>
+                                              </div>
+                                              
+                                              </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                              <button type="submit" class="btn btn-default">Annuler</button>
+                                              <button type="submit" class="btn btn-primary float-right">Envoyer</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+
+                          <div class="modal fade" id="modal-modif-tanque-2" data-backdrop="static" data-keyboard="false">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Modification du Capteur|Tanque</h4>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <section class="content">
+                                  <div class="container-fluid">
+                                    <div class="row">
+                                      <!-- left column -->
+                                      <div class="col-md-12">
+                                        <!-- jquery validation -->
+                                        <div class="card card-primary">
+                                          <!-- /.card-header -->
+                                          <!-- form start -->
+                                          <form id="quickForm">
+                                            <div class="card-body">
+                                              <div class="form-group">
+                                    
+                                                <div class="form-group">
+                                                  <label>Reference du Tanque</label>
+                                                  <select class="form-control select2bs4" style="width: 100%;">
+                                                    <option selected="selected">Tanque001</option>
+                                                    <option>Tanque002</option>
+                                                    <option>Tanque003</option>
+                                                  </select>
+                                              </div>
+                                              <label>Capteurs|Tanque</label>
+                                              <div class="select2-purple">
+                                                <select class="select2" multiple="multiple" data-placeholder="Selectionner une phase"  style="width: 100%;">
+                                                  <option selected="select">Capteur001</option>
+                                                  <option selected="select">Capteur002</option>
+                                                  <option>Capteur003</option>
+                                                  <option>Capteur004</option>
+                                                  <option>Capteur005</option>
+                                                </select>
+                                              </div>
+                                              
+                                              </div>
+                                            <!-- /.card-body -->
+                                            <div class="card-footer">
+                                              <button type="submit" class="btn btn-default">Annuler</button>
+                                              <button type="submit" class="btn btn-primary float-right">Envoyer</button>
+                                            </div>
+                                          </form>
+                                        </div>
+                                        <!-- /.card -->
+                                        </div>
+                                      <!--/.col (left) -->
+                                      <!-- right column -->
+                                      <div class="col-md-6">
+                            
+                                      </div>
+                                      <!--/.col (right) -->
+                                    </div>
+                                    <!-- /.row -->
+                                  </div><!-- /.container-fluid -->
+                                </section>
+
+                              </div>
+                              <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                          </div>
+
+
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0" style="height: 300px;">
+                              <table class="table table-head-fixed text-nowrap text-center">
+                                <thead>
+                                  <tr>
+                                    <th>Reference du tanque</th>
+                                    <th>Capteurs</th>
+                                    <th>Action</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Tanque001</td>
+                                    <td>
+                                      <select multiple>
+                                        <option value="Capteur001">Capteur001</option>
+                                        <option value="Capteur002">Capteur002</option>
+                                        <option value="Capteur001">Capteur003</option>
+                                        <option value="Capteur002">Capteur004</option>
+                                        <option value="Capteur001">Capteur005</option>
+                                        <option value="Capteur002">Capteur006</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif-tanque-2">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete-3">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete-3" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Tanque002</td>
+                                    <td>
+                                      <select multiple>
+                                        <option value="Capteur001">Capteur001</option>
+                                        <option value="Capteur001">Capteur005</option>
+                                        <option value="Capteur002">Capteur006</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif-tanque-2">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete-1">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete-1" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>Tanque003</td>
+                                    <td>
+                                      <select multiple>
+                                        <option value="Capteur001">Capteur001</option>
+                                        <option value="Capteur002">Capteur002</option>
+                                        <option value="Capteur001">Capteur003</option>
+                                      </select>
+                                    </td>
+                                    <td>
+                                      <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-modif-tanque-2">
+                                        <i class="fas fa-edit"></i>
+                                      </button>
+                                      <!-- Icone de suppression -->
+                                      <button class="btn btn-danger btn-sm " type="button" data-toggle="modal" data-target="#modal-delete-1">
+                                        <i class="fas fa-trash-alt"></i>
+                                      </button>
+                                      <!-- Modal de confirmation de supression -->
+                                      <div class="modal fade" id="modal-delete-1" data-backdrop="static" data-keyboard="false">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <h4>Voulez-vous Archiver cet élément ?</h4>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                              <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="button" class="btn btn-danger delete-btn">Archiver</button>
+                                            </div>
+                                          </div>
+                                          <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                      </div>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <!-- /.card-body -->
+                          </div>
+                          <!-- /.card -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          
+          <!-- /.row -->
+        
+          <!-- /.row -->
+          
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer text-center" style="padding: 0.4rem 1rem;">
+      <strong>Copyright &copy; 2024 <a href="https://green-tech-innovation.com">Green Tech Innovation</a>.</strong>
+      Tous droits réservés.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+
+
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="dist/js/demo.js"></script>
+  <!-- Select2 -->
+  <script src="plugins/select2/js/select2.full.min.js"></script>
+    <!-- Custom app js code (time|battery|remove function) -->
+    <script src="dist/js/app.js"></script>
+  <script>
+    document.getElementById("backButton").addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche le comportement par défaut du lien
+        history.back(); // Retourne à la page précédente
+    });
+
+    $(function () {
+      //Initialize Select2 Elements
+      $('.select2').select2({
+        tags: true
+      })
+      
+    })
+  </script>
+</body>
+</html>
