@@ -2,7 +2,7 @@ from hello.models import (
     Capteur, Capteur_Serre, Culture, CultureSurface,
     Fertilisant, Fertilisation, FrequenceRemplissage,
     Humidite, PhaseCroissance, PhaseCulture,
-    PhaseFertilisation, SerreCulture, Tanque, Users
+    PhaseFertilisation, SerreCulture, Tanque
 )
 from rest_framework import serializers
 
@@ -39,12 +39,6 @@ class TanqueSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tanque
         fields = ['type', 'capacite']
-
-
-class UsersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Users
-        fields = ['phone', 'type', 'code']
 
 
 class CapteurSerializer(serializers.ModelSerializer):

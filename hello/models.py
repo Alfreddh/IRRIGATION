@@ -118,15 +118,7 @@ class Humidite(models.Model):
         return f"Humidite de la serre {self.id}"
 
 
-class Users(models.Model):
-    id = models.AutoField(primary_key=True)
-    phone = models.CharField(max_length=100, unique=True)
-    type = models.CharField(max_length=100)
-    code = models.CharField(max_length=100, unique=True)
-    date_ajout = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"Utilisateur {self.id}"
 
 
 class PhaseCroissance(models.Model):

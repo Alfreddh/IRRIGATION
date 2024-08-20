@@ -3,17 +3,20 @@ from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+from accounts.models import Users
+from accounts.serializers import UsersSerializer
 from api.serializers import (
     CapteurSerreSerializer, CapteurSerreSerializerAdd, CapteurSerializer,
     CultureSerializer, CultureSurfaceSerializer, CultureSurfaceSerializerAdd,
     FertilisantSerializer, FertilisationSerializer, FrequenceRemplissageSerializer,
     HumiditeSerializer, PhaseCroissanceSerializer, PhaseCultureSerializer,
-    PhaseFertilisationSerializer, SerreCultureSerializer, TanqueSerializer, UsersSerializer
+    PhaseFertilisationSerializer, SerreCultureSerializer, TanqueSerializer
 )
 from hello.models import (
     Capteur, Capteur_Serre, Culture, CultureSurface, Fertilisant,
     Fertilisation, FrequenceRemplissage, Humidite, PhaseCroissance,
-    PhaseCulture, PhaseFertilisation, Planche, SerreCulture, Tanque, Users
+    PhaseCulture, PhaseFertilisation, Planche, SerreCulture, Tanque,
 )
 
 # Importations pour la documentation Swagger via DRF-YASG

@@ -77,11 +77,6 @@ class HumiditeAdmin(admin.ModelAdmin):
     list_display = ('id', 'valeur', 'serre_culture_id')
     search_fields = ('serre_culture_id__numero_serre',)
 
-@admin.register(Users)
-class UsersAdmin(admin.ModelAdmin):
-    list_display = ('id', 'phone', 'type', 'code', 'date_ajout')
-    search_fields = ('phone', 'code')
-    readonly_fields = ('date_ajout',)
 
 @admin.register(PhaseCroissance)
 class PhaseCroissanceAdmin(admin.ModelAdmin):
