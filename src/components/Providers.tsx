@@ -2,7 +2,7 @@
 import type { ChildrenType, Direction } from '@/core/types'
 
 // Context Imports
-// import { VerticalNavProvider } from '@menu/contexts/verticalNavContext'
+import { VerticalNavProvider } from '@/menu/contexts/verticalNavContext'
 import { SettingsProvider } from '@/core/contexts/settingsContext'
 import ThemeProvider from '@/components/theme'
 
@@ -25,14 +25,14 @@ const Providers = (props: Props) => {
   const settingsCookie = getSettingsFromCookie()
 
   return (
-    // <VerticalNavProvider>
+    <VerticalNavProvider>
       <SettingsProvider settingsCookie={settingsCookie} mode={mode}>
         <ThemeProvider direction={direction}>
           {children}
           {/* <UpgradeToProButton /> */}
         </ThemeProvider>
       </SettingsProvider>
-    // </VerticalNavProvider>
+    </VerticalNavProvider>
   )
 }
 
