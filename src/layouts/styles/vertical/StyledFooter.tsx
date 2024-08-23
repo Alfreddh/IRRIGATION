@@ -1,4 +1,4 @@
-import styled from "@emotion/styled/macro";
+import styled from "@emotion/styled";
 import type { CSSObject } from "@emotion/styled/macro";
 
 // Config Imports

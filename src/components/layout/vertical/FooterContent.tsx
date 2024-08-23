@@ -7,28 +7,29 @@ import Link from 'next/link'
 import classnames from 'classnames'
 
 // Hook Imports
-import useVerticalNav from '@/menu/hooks/useVerticalNav'
+// import useVerticalNav from '@/menu/hooks/useVerticalNav'
 
 // Util Imports
 import { verticalLayoutClasses } from '@/layouts/utils/layoutClasses'
 
 const FooterContent = () => {
   // Hooks
-  const { isBreakpointReached } = useVerticalNav()
+  // const { isBreakpointReached } = useVerticalNav()
 
   return (
     <div
-      className={classnames(verticalLayoutClasses.footerContent, 'flex items-center justify-between flex-wrap gap-4')}
+      className={classnames(verticalLayoutClasses.footerContent, 'flex items-center justify-center flex-wrap gap-4')}
     >
       <p>
-        <span>{`© ${new Date().getFullYear()}, Made with `}</span>
-        <span>{`❤️`}</span>
-        <span>{` by `}</span>
-        <Link href='https://themeselection.com' target='_blank' className='text-primary'>
-          Green Tech Innovation
+        <span className='font-extrabold text-gray-400'> Copyright </span>
+        <span className='font-extrabold text-gray-400'>{`© ${new Date().getFullYear()}`}</span>
+        <Link href='https://green-tech-innovation.com' target='_blank' className='font-extrabold text-blue-600 ml-1.5'>
+          Green Tech Innovation  
         </Link>
+        <span className="ml-1 font-semibold text-gray-400"> Tous droits réservés. </span>
+
       </p>
-      {!isBreakpointReached && (
+      {/* {!isBreakpointReached && (
         <div className='flex items-center gap-4'>
           <Link href='https://themeselection.com/license' target='_blank' className='text-primary'>
             License
@@ -40,14 +41,14 @@ const FooterContent = () => {
             Documentation
           </Link>
           <Link
-            href={`https://github.com/themeselection/${process.env.NEXT_PUBLIC_REPO_NAME}/issues`}
+            href={`https://green-tech-innovation.com`}
             target='_blank'
             className='text-primary'
           >
             Support
           </Link>
         </div>
-      )}
+      )} */}
     </div>
   )
 }
