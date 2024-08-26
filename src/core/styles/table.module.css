@@ -51,6 +51,8 @@
 .tableHeadCell:first-of-type:not(:has(input[type='checkbox'])) {
   padding-block: 0.5rem;
   padding-inline: 1.25rem 1rem;
+  padding-left: 1rem
+
 }
 
 .tableHeadCell:first-of-type:has(input[type='checkbox']) {
@@ -70,6 +72,8 @@
   font-size: 0.9375rem;
   line-height: 1.4667;
   block-size: 50px; 
+  padding-left: 1rem;
+
 }
 
 .tableCell:not(:first-of-type):not(:last-of-type) {

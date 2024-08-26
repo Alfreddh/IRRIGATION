@@ -69,14 +69,12 @@ export type UserPayloadObject = {
 
   export type User = {
     id: number | string
-    avatarSrc: string,
+    // avatarSrc: string,
     name: string,
-    username: string,
-    email: string,
-    iconClass: string,
-    roleIcon: string, 
+    phone: string,
+    password: string,
     role: string,
-    status: string
+    // roleIcon: string
   }
   
   export type UserForm = {

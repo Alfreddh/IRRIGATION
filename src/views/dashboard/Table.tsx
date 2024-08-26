@@ -3,7 +3,7 @@
 // MUI Imports
 import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
-import Chip from '@mui/material/Chip'
+import {Button, Box} from '@mui/material';
 
 // Third-party Imports
 import classnames from 'classnames'
@@ -15,10 +15,11 @@ import CustomAvatar from '@/core/components/mui/Avatar'
 import tableStyles from '@/core/styles/table.module.css'
 import { useState } from 'react'
 
-import { ActionButtons } from './ActionButtons'
+import { ActionButtons } from '../../components/users/ActionButtons'
 
 import type { User } from '@/interfaces'
-import EditUserModal from './EditUserModal'
+import EditUserModal from '../../components/users/EditUserModal'
+import AddUserModal from '../../components/users/AddUserModal';
 
 
 type TableBodyRowType = User
@@ -27,179 +28,108 @@ type TableBodyRowType = User
 const rowsData: TableBodyRowType[] = [
   {
     id: 1,
-    avatarSrc: '/images/avatars/1.png',
+    // avatarSrc: '/images/avatars/1.png',
     name: 'Jordan Stevenson',
-    username: '@amiccoo',
-    email: 'Jacinthe_Blick@hotmail.com',
-    iconClass: 'text-primary',
-    roleIcon: 'ri-vip-crown-line',
+    phone: 'Jacinthe_Blick@hotmail.com',
     role: 'Admin',
-    status: 'pending'
+    password: 'yanel'
   },
   {
     id: 2,
-    avatarSrc: '/images/avatars/2.png',
     name: 'Richard Payne',
-    username: '@brossiter15',
-    email: 'Jaylon_Bartell3@gmail.com',
-    iconClass: 'text-warning',
-    roleIcon: 'ri-edit-box-line',
-    role: 'Editor',
-    status: 'active'
+    phone: 'Jaylon_Bartell3@gmail.com',
+    role: 'User',
+    password: 'yanel'
   },
   {
-    id: 3,
-    avatarSrc: '/images/avatars/3.png',
-    name: 'Jennifer Summers',
-    username: '@jsbemblinf',
-    email: 'Tristin_Johnson@gmail.com',
-    iconClass: 'text-error',
-    roleIcon: 'ri-computer-line',
-    role: 'Author',
-    status: 'active'
-  },
-  {
-    id: 4,
-    avatarSrc: '/images/avatars/4.png',
-    name: 'Mr. Justin Richardson',
-    username: '@justin45',
-    email: 'Toney21@yahoo.com',
-    iconClass: 'text-warning',
-    roleIcon: 'ri-edit-box-line',
-    role: 'Editor',
-    status: 'pending'
-  },
-  {
-    id: 5,
-    avatarSrc: '/images/avatars/5.png',
-    name: 'Nicholas Tanner',
-    username: '@tannernic',
-    email: 'Hunter_Kuhic68@hotmail.com',
-    iconClass: 'text-info',
-    roleIcon: 'ri-pie-chart-2-line',
-    role: 'Maintainer',
-    status: 'active'
-  },
-  {
-    id: 6,
-    avatarSrc: '/images/avatars/6.png',
-    name: 'Crystal Mays',
-    username: '@crystal99',
-    email: 'Norene_Bins@yahoo.com',
-    iconClass: 'text-warning',
-    roleIcon: 'ri-edit-box-line',
-    role: 'Editor',
-    status: 'pending'
-  },
-  {
-    id: 7,
-    avatarSrc: '/images/avatars/7.png',
-    name: 'Mary Garcia',
-    username: '@marygarcia4',
-    email: 'Emmitt.Walker14@hotmail.com',
-    iconClass: 'text-info',
-    roleIcon: 'ri-pie-chart-2-line',
-    role: 'Maintainer',
-    status: 'inactive'
-  },
-  {
-    id: 8,
-    avatarSrc: '/images/avatars/8.png',
-    name: 'Megan Roberts',
-    username: '@megan78',
-    email: 'Patrick.Howe73@gmail.com',
-    iconClass: 'text-success',
-    roleIcon: 'ri-user-3-line',
-    role: 'Subscriber',
-    status: 'active'
-  },
-  {
-    id: 9,
-    avatarSrc: '/images/avatars/4.png',
-    name: 'Mr. Justin Richardson',
-    username: '@justin45',
-    email: 'Toney21@yahoo.com',
-    iconClass: 'text-warning',
-    roleIcon: 'ri-edit-box-line',
-    role: 'Editor',
-    status: 'pending'
-  },
-  {
-    id: 10,
-    avatarSrc: '/images/avatars/5.png',
-    name: 'Nicholas Tanner',
-    username: '@tannernic',
-    email: 'Hunter_Kuhic68@hotmail.com',
-    iconClass: 'text-info',
-    roleIcon: 'ri-pie-chart-2-line',
-    role: 'Maintainer',
-    status: 'active'
-  },
-  {
-    id: 11,
-    avatarSrc: '/images/avatars/6.png',
-    name: 'Crystal Mays',
-    username: '@crystal99',
-    email: 'Norene_Bins@yahoo.com',
-    iconClass: 'text-warning',
-    roleIcon: 'ri-edit-box-line',
-    role: 'Editor',
-    status: 'pending'
-  },
-  {
-    id: 12,
-    avatarSrc: '/images/avatars/7.png',
-    name: 'Mary Garcia',
-    username: '@marygarcia4',
-    email: 'Emmitt.Walker14@hotmail.com',
-    iconClass: 'text-info',
-    roleIcon: 'ri-pie-chart-2-line',
-    role: 'Maintainer',
-    status: 'inactive'
-  },
-  {
-    id: 13,
-    avatarSrc: '/images/avatars/8.png',
-    name: 'Megan Roberts',
-    username: '@megan78',
-    email: 'Patrick.Howe73@gmail.com',
-    iconClass: 'text-success',
-    roleIcon: 'ri-user-3-line',
-    role: 'Subscriber',
-    status: 'active'
-  },
-  {
-    id: 14,
-    avatarSrc: '/images/avatars/1.png',
+    id: 1,
+    // avatarSrc: '/images/avatars/1.png',
     name: 'Jordan Stevenson',
-    username: '@amiccoo',
-    email: 'Jacinthe_Blick@hotmail.com',
-    iconClass: 'text-primary',
-    roleIcon: 'ri-vip-crown-line',
+    phone: 'Jacinthe_Blick@hotmail.com',
     role: 'Admin',
-    status: 'pending'
+    password: 'yanel'
   },
   {
-    id: 15,
-    avatarSrc: '/images/avatars/2.png',
+    id: 2,
     name: 'Richard Payne',
-    username: '@brossiter15',
-    email: 'Jaylon_Bartell3@gmail.com',
-    iconClass: 'text-warning',
-    roleIcon: 'ri-edit-box-line',
-    role: 'Editor',
-    status: 'active'
+    phone: 'Jaylon_Bartell3@gmail.com',
+    role: 'User',
+    password: 'yanel'
   },
   {
-    id: 16,
-    avatarSrc: '/images/avatars/3.png',
-    name: 'Jennifer Summers',
-    username: '@jsbemblinf',
-    email: 'Tristin_Johnson@gmail.com',
-    iconClass: 'text-error',
-    roleIcon: 'ri-computer-line',
-    role: 'Author',
-    status: 'active'
+    id: 1,
+    // avatarSrc: '/images/avatars/1.png',
+    name: 'Jordan Stevenson',
+    phone: 'Jacinthe_Blick@hotmail.com',
+    role: 'Admin',
+    password: 'yanel'
+  },
+  {
+    id: 2,
+    name: 'Richard Payne',
+    phone: 'Jaylon_Bartell3@gmail.com',
+    role: 'User',
+    password: 'yanel'
+  },
+  {
+    id: 1,
+    // avatarSrc: '/images/avatars/1.png',
+    name: 'Jordan Stevenson',
+    phone: 'Jacinthe_Blick@hotmail.com',
+    role: 'Admin',
+    password: 'yanel'
+  },
+  {
+    id: 2,
+    name: 'Richard Payne',
+    phone: 'Jaylon_Bartell3@gmail.com',
+    role: 'User',
+    password: 'yanel'
+  },
+  {
+    id: 1,
+    // avatarSrc: '/images/avatars/1.png',
+    name: 'Jordan Stevenson',
+    phone: 'Jacinthe_Blick@hotmail.com',
+    role: 'Admin',
+    password: 'yanel'
+  },
+  {
+    id: 2,
+    name: 'Richard Payne',
+    phone: 'Jaylon_Bartell3@gmail.com',
+    role: 'User',
+    password: 'yanel'
+  },
+  {
+    id: 1,
+    // avatarSrc: '/images/avatars/1.png',
+    name: 'Jordan Stevenson',
+    phone: 'Jacinthe_Blick@hotmail.com',
+    role: 'Admin',
+    password: 'yanel'
+  },
+  {
+    id: 2,
+    name: 'Richard Payne',
+    phone: 'Jaylon_Bartell3@gmail.com',
+    role: 'User',
+    password: 'yanel'
+  },
+  {
+    id: 1,
+    // avatarSrc: '/images/avatars/1.png',
+    name: 'Jordan Stevenson',
+    phone: 'Jacinthe_Blick@hotmail.com',
+    role: 'Admin',
+    password: 'yanel'
+  },
+  {
+    id: 2,
+    name: 'Richard Payne',
+    phone: 'Jaylon_Bartell3@gmail.com',
+    role: 'User',
+    password: 'yanel'
   },
 
 ]
@@ -209,6 +139,8 @@ const Table = () => {
   const [users, setUsers] = useState<User[]>(rowsData);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [openAddModal, setOpenAddModal] = useState(false);
+
 
   // console.log("users first : ", users)
 
@@ -226,10 +158,39 @@ const Table = () => {
     setIsEditModalOpen(false);
   };
 
+  const handleAddUser = async (newUser: Omit<User, 'id'>) => {
+    try {
+      console.log("newUseer : ", newUser)
+      // const createdUser = await createUser(newUser);
+      
+      // createdUser est une fonction à écrire qui va permettre de lancer une requête vers l'API
+
+      // setUsers(prevUsers => [...prevUsers, createdUser ]);
+      
+      // Optionnel : Afficher une notification de succès
+    } catch (error) {
+      console.error('Error creating user:', error);
+      // Optionnel : Afficher une notification d'erreur
+    }
+  };
+
+
   
 
   return (
     <Card>
+      <Box sx={{ display: 'flex', justifyContent: 'flex-start', m:2,  ml:4 }}>
+          <Button
+            variant="contained"
+            color="info"
+            // startIcon={<AddIcon />}
+            onClick={() => setOpenAddModal(true)}
+          >
+            Nouveau
+          </Button>
+          {/* <Typography variant='h5'>User List</Typography> */}
+      </Box>
+
       <div className={tableStyles.tableContainer}>
         <table className={tableStyles.table}>
           <thead className={tableStyles.tableHead}>
@@ -245,21 +206,21 @@ const Table = () => {
               <tr key={index} className={tableStyles.tableRow}>
                 <td className={tableStyles.tableCell} data-label="Utilisateur">
                   <div className='flex items-center gap-3'>
-                    <CustomAvatar src={row.avatarSrc} size={34} />
+                    {/* <CustomAvatar src={row.avatarSrc} size={34} /> */}
                     <div className='flex flex-col'>
                       <Typography color='text.primary' className='font-medium'>
                         {row.name}
                       </Typography>
-                      <Typography variant='body2'>{row.username}</Typography>
+                      {/* <Typography variant='body2'>{row.username}</Typography> */}
                     </div>
                   </div>
                 </td>
                 <td className={tableStyles.tableCell} data-label="Téléphone">
-                  <Typography>{row.email}</Typography>
+                  <Typography>{row.phone}</Typography>
                 </td>
                 <td className={tableStyles.tableCell} data-label="Role">
                   <div className='flex gap-2'>
-                    <i className={classnames(row.roleIcon, row.iconClass, 'text-[22px]')} />
+                    {/* <i className={classnames(row.roleIcon, 'text-[22px]')} /> */}
                     <Typography color='text.primary'>{row.role}</Typography>
                   </div>
                 </td>
@@ -277,7 +238,7 @@ const Table = () => {
         </table>
       </div>
 
-        {/* Edit User Modal */}
+      {/* Edit User Modal */}
         {isEditModalOpen && selectedUser && (
         <EditUserModal
           user={selectedUser}
@@ -285,6 +246,14 @@ const Table = () => {
           onSave={handleSaveChanges}
         />
       )}
+
+      <AddUserModal
+          open={openAddModal}
+          onClose={() => setOpenAddModal(false)}
+          onAdd={handleAddUser}
+      />
+
+
 
     </Card>
 

@@ -9,7 +9,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 
-import { deleteUser } from './request-button';
+import { deleteUser } from '../../views/dashboard/request-button';
 
 interface ActionButtonsProps {
   userId: string | number;
@@ -47,6 +47,7 @@ export const ActionButtons: React.FC<ActionButtonsProps> = ({ userId, onEdit, on
     }
   };
 
+
   return (
     <>
       <ButtonGroup variant="contained" aria-label="outlined primary button group">
@@ -74,14 +75,14 @@ export const ActionButtons: React.FC<ActionButtonsProps> = ({ userId, onEdit, on
         <DialogTitle>{"Confirm Deletion"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete this user? This action cannot be undone.
+            Etes vous sure de vouloir supprimer cet utilisateur ? Cette action n'est pas remédiable...
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpenDeleteDialog(false)} color="primary">
+          <Button onClick={() => setOpenDeleteDialog(false)} variant='outlined' color="primary">
             Cancel
           </Button>
-          <Button onClick={handleDelete} color="secondary">
+          <Button onClick={handleDelete} variant='contained' color="error">
             Confirm
           </Button>
         </DialogActions>

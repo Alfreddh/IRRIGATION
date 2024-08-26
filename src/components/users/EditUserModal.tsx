@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import type { User } from '@/interfaces';
+import { validateForm } from '@/views/Validations/edit-add';
 
 interface EditUserModalProps {
   user: User;
@@ -16,16 +17,38 @@ interface EditUserModalProps {
 const EditUserModal: React.FC<EditUserModalProps> = ({ user, onClose, onSave }) => {
   const [updatedUser, setUpdatedUser] = useState<User>(user);
 
+  const [errors, setErrors] = useState({
+    name: '',
+    phone: '',
+    password: '',
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUpdatedUser(prevUser => ({
       ...prevUser,
       [name]: value,
     }));
+
+    // Valider le champ spécifique
+    const fieldErrors = validateForm({ [name]: value });
+
+    setErrors({
+      ...errors,
+      [name]: fieldErrors[name] || ''
+    });
+
   };
 
   const handleSave = () => {
     try {
+
+      const formErrors = validateForm(updatedUser);
+      if (Object.keys(formErrors).length > 0) {
+        setErrors(formErrors);
+        return;
+      }
+
         // Appel API pour supprimer l'utilisateur
         // await updateUser(userId);
 
@@ -52,30 +75,38 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onClose, onSave }) 
           value={updatedUser.name}
           onChange={handleChange}
           fullWidth
+          error={!!errors.name}
+          helperText={errors.name}
         />
+
         <TextField
           margin="dense"
-          label="Username"
-          name="username"
-          value={updatedUser.username}
+          label="Téléphone"
+          name="phone"
+          value={updatedUser.phone}
           onChange={handleChange}
           fullWidth
+          error={!!errors.phone}
+          helperText={errors.phone}
         />
+
         <TextField
           margin="dense"
-          label="Email"
-          name="email"
-          value={updatedUser.email}
+          label="Password"
+          name="password"
+          value={updatedUser.password}
           onChange={handleChange}
           fullWidth
+          error={!!errors.password}
+          helperText={errors.password}
         />
         {/* Ajouter d'autres champs si nécessaire */}
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">
+        <Button onClick={onClose} variant='contained' color="secondary">
           Cancel
         </Button>
-        <Button onClick={handleSave} color="secondary">
+        <Button onClick={handleSave} variant='contained' color="primary">
           Save
         </Button>
       </DialogActions>
