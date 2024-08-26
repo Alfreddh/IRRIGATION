@@ -67,23 +67,30 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
           <SubMenu
             label='Tableau de Bord'
             icon={<i className='ri-home-smile-line' />}
+            href='#'
             // suffix={<Chip size='small' color='error' />}
           >
-        </SubMenu>
+          </SubMenu>
+
+        </MenuSection>
 
         <MenuSection label=''>
          
-         <SubMenu label='Utilisateur' icon={<i className='ri-shield-keyhole-line' />}>
+         <SubMenu label='Utilisateur' 
+                  icon={<i className='ri-shield-keyhole-line' />}
+                  href='#' 
+          >
           
          </SubMenu>
-         
-       </MenuSection>
-         
+
         </MenuSection>
         
         <MenuSection label=''>
          
-          <SubMenu label='Culture' icon={<i className='ri-leaf-fill' />}>
+          <SubMenu label='Culture' 
+                   icon={<i className='ri-leaf-fill' />}
+                   href='#' 
+                  >
            
           </SubMenu>
           
@@ -91,7 +98,10 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
 
         <MenuSection label=''>
          
-          <SubMenu label='Capteurs et Actionneurs' icon={<i className='ri-shield-keyhole-line' />}>
+          <SubMenu label='Capteurs et Actionneurs' 
+                   icon={<i className='ri-shield-keyhole-line' />}
+                   href='#' 
+                  >
            
           </SubMenu>
           
@@ -99,7 +109,10 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
 
         <MenuSection label=''>
          
-          <SubMenu label='Tanques' icon={<i className='ri-shield-keyhole-line' />}>
+          <SubMenu label='Tanques' 
+                icon={<i className='ri-shield-keyhole-line' />}
+                href='#' 
+          >
            
           </SubMenu>
           
@@ -107,7 +120,10 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
 
         <MenuSection label=''>
          
-         <SubMenu label='Logs' icon={<i className='ri-shield-keyhole-line' />}>
+         <SubMenu label='Logs' 
+         icon={<i className='ri-shield-keyhole-line' />}
+         href='#' 
+         >
           
          </SubMenu>
          
@@ -116,8 +132,6 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
        <MenuSection label=''>
          
        </MenuSection>
-
-       
 
 
       </Menu>

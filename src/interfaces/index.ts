@@ -55,16 +55,28 @@ export type UserPayloadObject = {
     business: string
   }
   
-  export type Client = {
-    id: number
-    avatar: string
-    login: string
-    name: string
-    company: string
-    city: string
-    progress: number
-    created: string
-    created_mm_dd_yyyy: string
+  // export type Client = {
+  //   id: number
+  //   avatar: string
+  //   login: string
+  //   name: string
+  //   company: string
+  //   city: string
+  //   progress: number
+  //   created: string
+  //   created_mm_dd_yyyy: string
+  // }
+
+  export type User = {
+    id: number | string
+    avatarSrc: string,
+    name: string,
+    username: string,
+    email: string,
+    iconClass: string,
+    roleIcon: string, 
+    role: string,
+    status: string
   }
   
   export type UserForm = {

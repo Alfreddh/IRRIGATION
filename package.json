@@ -17,6 +17,7 @@
     "@mui/material-nextjs": "^5.16.6",
     "@mui/utils": "^5.16.6",
     "TimelineDot": "link:@mui/lab/TimelineDot",
+    "axios": "^1.7.5",
     "classnames": "^2.5.1",
     "joi": "^17.13.3",
     "next": "14.2.6",
@@ -24,7 +25,8 @@
     "react-dom": "^18.3.1",
     "react-perfect-scrollbar": "^1.5.8",
     "react-use": "^17.5.1",
-    "server-only": "^0.0.1"
+    "server-only": "^0.0.1",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.239",
