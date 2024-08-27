@@ -5,17 +5,17 @@ import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import {Button, Box} from '@mui/material';
 
-// Third-party Imports
-import classnames from 'classnames'
+// // Third-party Imports
+// import classnames from 'classnames'
 
-// Components Imports
-import CustomAvatar from '@/core/components/mui/Avatar'
+// // Components Imports
+// import CustomAvatar from '@/core/components/mui/Avatar'
 
 // Styles Imports
 import tableStyles from '@/core/styles/table.module.css'
 import { useState } from 'react'
 
-import { ActionButtons } from '../../components/users/ActionButtons'
+import { ActionButtons } from '../../components/ActionButtons'
 
 import type { User } from '@/interfaces'
 import EditUserModal from '../../components/users/EditUserModal'
@@ -134,7 +134,7 @@ const rowsData: TableBodyRowType[] = [
 
 ]
 
-const Table = () => {
+const UserTable = () => {
 
   const [users, setUsers] = useState<User[]>(rowsData);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
@@ -260,4 +260,4 @@ const Table = () => {
   )
 }
 
-export default Table
+export default UserTable

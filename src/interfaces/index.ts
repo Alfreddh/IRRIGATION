@@ -81,3 +81,23 @@ export type UserPayloadObject = {
     name: string
     email: string
   }
+
+  export type Culture = {
+    id : number | string
+    culture: string
+    serre : string
+    superficie : number
+  }
+
+  export type Tanque = {
+    id : number | string
+    type : string
+    capacity: number
+  }
+
+  
+  export type Capteur = {
+    id : number | string
+    capteur: string
+    type : string
+  }

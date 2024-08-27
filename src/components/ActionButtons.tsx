@@ -9,7 +9,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { useState } from 'react';
 
-import { deleteUser } from '../../views/dashboard/request-button';
+import { deleteUser } from '../views/dashboard/request-button';
 
 interface ActionButtonsProps {
   userId: string | number;

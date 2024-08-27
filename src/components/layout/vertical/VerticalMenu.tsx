@@ -67,7 +67,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
           <SubMenu
             label='Tableau de Bord'
             icon={<i className='ri-home-smile-line' />}
-            href='#'
+            href='/'
             // suffix={<Chip size='small' color='error' />}
           >
           </SubMenu>
@@ -78,7 +78,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
          
          <SubMenu label='Utilisateur' 
                   icon={<i className='ri-shield-keyhole-line' />}
-                  href='#' 
+                  href='/users' 
           >
           
          </SubMenu>
@@ -89,7 +89,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
          
           <SubMenu label='Culture' 
                    icon={<i className='ri-leaf-fill' />}
-                   href='#' 
+                   href='/cultures' 
                   >
            
           </SubMenu>
@@ -100,7 +100,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
          
           <SubMenu label='Capteurs et Actionneurs' 
                    icon={<i className='ri-shield-keyhole-line' />}
-                   href='#' 
+                   href='/capteurs' 
                   >
            
           </SubMenu>
@@ -111,7 +111,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
          
           <SubMenu label='Tanques' 
                 icon={<i className='ri-shield-keyhole-line' />}
-                href='#' 
+                href='/tanques' 
           >
            
           </SubMenu>
@@ -122,7 +122,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
          
          <SubMenu label='Logs' 
          icon={<i className='ri-shield-keyhole-line' />}
-         href='#' 
+         href='/' 
          >
           
          </SubMenu>
