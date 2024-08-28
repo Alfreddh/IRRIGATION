@@ -15,7 +15,7 @@ import {Button, Box} from '@mui/material';
 import tableStyles from '@/core/styles/table.module.css'
 import { useState } from 'react'
 
-import { ActionButtons } from '../../components/ActionButtons'
+import { ActionButtons } from '@/components/ActionButtons';
 
 import type { Culture} from '@/interfaces'
 import EditCultureModal from '@/components/cultures/EditCultureModal';
@@ -188,7 +188,7 @@ const CultureTable = () => {
           <tbody className={tableStyles.tableBody}>
             {cultures.map((row, index) => (
               <tr key={index} className={tableStyles.tableRow}>
-                <td className={tableStyles.tableCell} data-label="Utilisateur">
+                <td className={tableStyles.tableCell} data-label="Culture">
                   <div className='flex items-center gap-3'>
                     {/* <CustomAvatar src={row.avatarSrc} size={34} /> */}
                     <div className='flex flex-col'>
@@ -199,10 +199,10 @@ const CultureTable = () => {
                     </div>
                   </div>
                 </td>
-                <td className={tableStyles.tableCell} data-label="Téléphone">
+                <td className={tableStyles.tableCell} data-label="Serre">
                   <Typography>{row.serre}</Typography>
                 </td>
-                <td className={tableStyles.tableCell} data-label="Role">
+                <td className={tableStyles.tableCell} data-label="Superficie">
                   <div className='flex gap-2'>
                     {/* <i className={classnames(row.roleIcon, 'text-[22px]')} /> */}
                     <Typography color='text.primary'>{row.superficie}</Typography>

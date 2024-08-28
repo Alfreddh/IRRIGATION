@@ -52,7 +52,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onClose, onSave }) 
         // Appel API pour supprimer l'utilisateur
         // await updateUser(userId);
 
-        onSave(updatedUser);
+      onSave(updatedUser);
 
         
         // Afficher une notification de succès (si vous avez un système de notification)

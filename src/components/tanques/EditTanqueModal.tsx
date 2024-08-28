@@ -17,11 +17,6 @@ interface EditTanqueModalProps {
 const EditTanqueModal: React.FC<EditTanqueModalProps> = ({ tanque, onClose, onSave }) => {
   const [updatedTanque, setUpdatedTanque] = useState<Tanque>(tanque);
 
-  const [errors, setErrors] = useState({
-    name: '',
-    phone: '',
-    password: '',
-  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,24 +25,11 @@ const EditTanqueModal: React.FC<EditTanqueModalProps> = ({ tanque, onClose, onSa
       [name]: value,
     }));
 
-    // Valider le champ spécifique
-    const fieldErrors = validateForm({ [name]: value });
-
-    setErrors({
-      ...errors,
-      [name]: fieldErrors[name] || ''
-    });
 
   };
 
   const handleSave = () => {
     try {
-
-      const formErrors = validateForm(updatedTanque);
-      if (Object.keys(formErrors).length > 0) {
-        setErrors(formErrors);
-        return;
-      }
 
         // Appel API pour supprimer l'utilisateur
         // await updateTanque(tanqueId);

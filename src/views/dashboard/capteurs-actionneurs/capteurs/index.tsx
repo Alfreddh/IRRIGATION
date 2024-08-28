@@ -15,8 +15,7 @@ import {Button, Box} from '@mui/material';
 import tableStyles from '@/core/styles/table.module.css'
 import { useState } from 'react'
 
-import { ActionButtons } from '../../components/ActionButtons'
-
+import { ActionButtons } from '@/components/ActionButtons';
 import type { Capteur} from '@/interfaces'
 import AddCapteurModal from '@/components/capteurs/AddCapteurModal';
 import EditCapteurModal from '@/components/capteurs/EditCapteurModal';
@@ -173,7 +172,7 @@ const CapteurTable = () => {
           <tbody className={tableStyles.tableBody}>
             {capteurs.map((row, index) => (
               <tr key={index} className={tableStyles.tableRow}>
-                <td className={tableStyles.tableCell} data-label="Utilisateur">
+                <td className={tableStyles.tableCell} data-label="Capteur / Actionneur">
                   <div className='flex items-center gap-3'>
                     {/* <CustomAvatar src={row.avatarSrc} size={34} /> */}
                     <div className='flex flex-col'>
@@ -187,7 +186,7 @@ const CapteurTable = () => {
                 {/* <td className={tableStyles.tableCell} data-label="Téléphone">
                   <Typography>{row.serre}</Typography>
                 </td> */}
-                <td className={tableStyles.tableCell} data-label="Role">
+                <td className={tableStyles.tableCell} data-label="Type">
                   <div className='flex gap-2'>
                     {/* <i className={classnames(row.roleIcon, 'text-[22px]')} /> */}
                     <Typography color='text.primary'>{row.type}</Typography>

@@ -173,7 +173,7 @@ const TanqueTable = () => {
           <tbody className={tableStyles.tableBody}>
             {tanques.map((row, index) => (
               <tr key={index} className={tableStyles.tableRow}>
-                <td className={tableStyles.tableCell} data-label="Utilisateur">
+                <td className={tableStyles.tableCell} data-label="Type de Tanque">
                   <div className='flex items-center gap-3'>
                     {/* <CustomAvatar src={row.avatarSrc} size={34} /> */}
                     <div className='flex flex-col'>
@@ -187,7 +187,7 @@ const TanqueTable = () => {
                 {/* <td className={tableStyles.tableCell} data-label="Téléphone">
                   <Typography>{row.serre}</Typography>
                 </td> */}
-                <td className={tableStyles.tableCell} data-label="Role">
+                <td className={tableStyles.tableCell} data-label="Capacité (en L)">
                   <div className='flex gap-2'>
                     {/* <i className={classnames(row.roleIcon, 'text-[22px]')} /> */}
                     <Typography color='text.primary'>{row.capacity}</Typography>

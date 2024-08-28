@@ -154,6 +154,7 @@ const UserTable = () => {
   };
 
   const handleSaveChanges = (updatedUser: User) => {
+    console.log("updateduser : ", updatedUser)
     setUsers(prevUsers => prevUsers.map(user => user.id === updatedUser.id ? updatedUser : user));
     setIsEditModalOpen(false);
   };

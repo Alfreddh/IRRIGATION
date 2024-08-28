@@ -5,23 +5,23 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
-import type { Culture } from '@/interfaces';
-import { validateForm } from '@/views/Validations/edit-add';
+import type { Phase } from '@/interfaces';
 
-interface EditCultureModalProps {
-  culture: Culture;
+interface EditPhaseModalProps {
+  phase: Phase;
   onClose: () => void;
-  onSave: (culture: Culture) => void;
+  onSave: (phase: Phase) => void;
 }
 
-const EditCultureModal: React.FC<EditCultureModalProps> = ({ culture, onClose, onSave }) => {
-  const [updatedCulture, setUpdatedCulture] = useState<Culture>(culture);
+const EditPhaseModal: React.FC<EditPhaseModalProps> = ({ phase, onClose, onSave }) => {
+  const [updatedPhase, setUpdatedPhase] = useState<Phase>(phase);
+
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUpdatedCulture(prevCulture => ({
-      ...prevCulture,
+    setUpdatedPhase(prevPhase => ({
+      ...prevPhase,
       [name]: value,
     }));
 
@@ -30,10 +30,10 @@ const EditCultureModal: React.FC<EditCultureModalProps> = ({ culture, onClose, o
   const handleSave = () => {
     try {
 
-        // Appel API pour supprimer l'utilisateur
+        // Appel API pour update l'utilisateur
         // await updateCulture(cultureId);
 
-        onSave(updatedCulture);
+        onSave(updatedPhase);
 
         
         // Afficher une notification de succès (si vous avez un système de notification)
@@ -47,13 +47,13 @@ const EditCultureModal: React.FC<EditCultureModalProps> = ({ culture, onClose, o
 
   return (
     <Dialog open onClose={onClose}>
-      <DialogTitle>Edit Culture</DialogTitle>
+      <DialogTitle>Edit Phase</DialogTitle>
       <DialogContent>
         <TextField
           margin="dense"
           label="Culture"
           name="culture"
-          value={updatedCulture.culture}
+          value={updatedPhase.culture}
           onChange={handleChange}
           fullWidth
           required
@@ -61,22 +61,46 @@ const EditCultureModal: React.FC<EditCultureModalProps> = ({ culture, onClose, o
 
         <TextField
           margin="dense"
-          label="Serre"
-          name="serre"
-          value={updatedCulture.serre}
-          onChange={handleChange}
+          label="Phases de la culture"
+          name="phases"
+          value={updatedPhase.phases.join(', ')} // Convert array to string
+          onChange={(e) => {
+            const value = e.target.value;
+            setUpdatedPhase(prev => ({
+              ...prev,
+              phases: value.split(',').map(phase => phase.trim()) // Convert string back to array
+            }));
+          }}
           fullWidth
         />
 
         <TextField
-          margin="dense"
-          label="Superficie"
-          name="superficie"
-          value={updatedCulture.superficie}
-          onChange={handleChange}
-          fullWidth
-          required
+            fullWidth
+            margin="normal"
+            label="Période de début"
+            name="startPeriod"
+            type="date"
+            value={updatedPhase.startPeriod}
+            onChange={handleChange}
+            required
+            InputLabelProps={{
+              shrink: true,
+            }}
         />
+        <TextField
+            fullWidth
+            margin="normal"
+            label="Période de fin"
+            name="endPeriod"
+            type="date"
+            value={updatedPhase.endPeriod}
+            onChange={handleChange}
+            required
+            InputLabelProps={{
+              shrink: true,
+            }}
+        />
+
         {/* Ajouter d'autres champs si nécessaire */}
       </DialogContent>
       <DialogActions>
@@ -91,4 +115,4 @@ const EditCultureModal: React.FC<EditCultureModalProps> = ({ culture, onClose, o
   );
 };
 
-export default EditCultureModal;
+export default EditPhaseModal;

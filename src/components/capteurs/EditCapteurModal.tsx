@@ -6,7 +6,6 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import type { Capteur } from '@/interfaces';
-import { validateForm } from '@/views/Validations/edit-add';
 
 interface EditCapteurModalProps {
   capteur: Capteur;
@@ -17,11 +16,6 @@ interface EditCapteurModalProps {
 const EditCapteurModal: React.FC<EditCapteurModalProps> = ({ capteur, onClose, onSave }) => {
   const [updatedCapteur, setUpdatedCapteur] = useState<Capteur>(capteur);
 
-  const [errors, setErrors] = useState({
-    name: '',
-    phone: '',
-    password: '',
-  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,26 +24,12 @@ const EditCapteurModal: React.FC<EditCapteurModalProps> = ({ capteur, onClose, o
       [name]: value,
     }));
 
-    // Valider le champ spécifique
-    const fieldErrors = validateForm({ [name]: value });
-
-    setErrors({
-      ...errors,
-      [name]: fieldErrors[name] || ''
-    });
-
   };
 
   const handleSave = () => {
     try {
-
-      const formErrors = validateForm(updatedCapteur);
-      if (Object.keys(formErrors).length > 0) {
-        setErrors(formErrors);
-        return;
-      }
-
-        // Appel API pour supprimer l'utilisateur
+      console.log(updatedCapteur)
+        // Appel API pour update l'utilisateur
         // await updateTanque(tanqueId);
 
         onSave(updatedCapteur);

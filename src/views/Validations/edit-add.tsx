@@ -1,6 +1,7 @@
 import Joi from 'joi';
 
 const formSchema = Joi.object({
+  id: Joi.alternatives().try(Joi.string(), Joi.number()).optional(), // champ id généré automatiquement
   name: Joi.string().trim().required().messages({
     'string.empty': 'Le nom est obligatoire'
   }),
@@ -11,8 +12,13 @@ const formSchema = Joi.object({
   password: Joi.string().trim().required().min(6).messages({
     'string.empty': 'Le mot de passe est obligatoire',
     'string.min': 'Le mot de passe doit contenir au moins 6 caractères'
+  }),
+  role: Joi.string().valid('Admin', 'User').required().messages({
+    'any.only': 'Le rôle doit être soit "Admin" soit "User"',
+    'string.empty': 'Le rôle est obligatoire'
   })
 });
+
 
 export const validateForm = (formData: any) => {
   const { error } = formSchema.validate(formData, { abortEarly: false });

@@ -101,3 +101,17 @@ export type UserPayloadObject = {
     capteur: string
     type : string
   }
+
+  export type Phase =  {
+    id: number | string
+    culture : string
+    phases : string[], 
+    startPeriod: Date | undefined,
+    endPeriod: Date | undefined
+  }
+
+  export type CapteurSerre = {
+    id: number | string
+    reference : string | number
+    capteurs: string[]
+  }
