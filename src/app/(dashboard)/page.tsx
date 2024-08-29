@@ -1,6 +1,8 @@
 // MUI Imports
 import Grid from '@mui/material/Grid'
 
+import DashboardView from '@/views/dashboard/tableau'
+
 // // Components Imports
 // import Award from '@/views/dashboard/Award'
 // import Transactions from '@/views/dashboard/Transactions'
@@ -12,13 +14,14 @@ import Grid from '@mui/material/Grid'
 // import SalesByCountries from '@views/dashboard/SalesByCountries'
 // import CardStatVertical from '@components/card-statistics/Vertical'
 // import Table from '@views/dashboard/Table'
-import Breakpoint from '@/views/dashboard/board'
+// import Breakpoint from '@/views/dashboard/board'
 
 const DashboardAnalytics = () => {
     return (
-        <Grid container spacing={6}>
-            {/* <Breakpoint /> */}
-        </Grid>
+        <DashboardView/>
+        // <Grid container spacing={6}>
+        //     {/* <Breakpoint /> */}
+        // </Grid>
     )
 }
 

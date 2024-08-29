@@ -1,4 +1,4 @@
-import Table from "@/views/dashboard/Users";
+import Table from "@/views/dashboard/users/Users";
 // import Grid from '@mui/material/Grid'
 // import Table2 from "@/views/dashboard/testTable";
 

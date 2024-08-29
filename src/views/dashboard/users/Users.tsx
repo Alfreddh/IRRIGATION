@@ -15,11 +15,11 @@ import {Button, Box} from '@mui/material';
 import tableStyles from '@/core/styles/table.module.css'
 import { useState } from 'react'
 
-import { ActionButtons } from '../../components/ActionButtons'
+import { ActionButtons } from '../../../components/ActionButtons'
 
 import type { User } from '@/interfaces'
-import EditUserModal from '../../components/users/EditUserModal'
-import AddUserModal from '../../components/users/AddUserModal';
+import EditUserModal from '../../../components/users/EditUserModal'
+import AddUserModal from '../../../components/users/AddUserModal';
 
 
 type TableBodyRowType = User
