@@ -17,7 +17,7 @@ const navigationCustomStyles = (theme: Theme) => {
     },
     [`& .${verticalNavClasses.container}`]: {
       transition: 'none',
-      borderColor: 'transparent',
+      borderColor: 'var(--mui-palette-divider)',
       [`& .${verticalNavClasses.toggled}`]: {
         boxShadow: 'var(--mui-customShadows-lg)'
       }

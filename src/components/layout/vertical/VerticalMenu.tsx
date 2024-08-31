@@ -63,79 +63,62 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
       >
 
         <MenuSection label=''>
-         
-          <SubMenu
-            label='Tableau de Bord'
-            icon={<i className='ri-home-smile-line' />}
-            href='/'
-            // suffix={<Chip size='small' color='error' />}
-          >
-          </SubMenu>
+        
+          <MenuItem href='/'>
+            <i className='ri-home-smile-line' />
+            <span>Tableau de Bord</span>
+          </MenuItem>
 
         </MenuSection>
 
         <MenuSection label=''>
-         
-         <SubMenu label='Utilisateur' 
-                  icon={<i className='ri-shield-keyhole-line' />}
-                  href='/users' 
-          >
+        
+          <MenuItem href='/users'>
+            <i className='ri-shield-keyhole-line' />
+            <span>Utilisateur</span>
+          </MenuItem>
           
-         </SubMenu>
-
         </MenuSection>
         
         <MenuSection label=''>
-         
-          <SubMenu label='Culture' 
-                   icon={<i className='ri-leaf-fill' />}
-                   href='/cultures' 
-                  >
-           
-          </SubMenu>
+        
+          <MenuItem href='/cultures'>
+            <i className='ri-leaf-fill' />
+            <span>Culture</span>
+          </MenuItem>
           
         </MenuSection>
 
         <MenuSection label=''>
-         
-          <SubMenu label='Capteurs et Actionneurs' 
-                   icon={<i className='ri-shield-keyhole-line' />}
-                   href='/capteurs' 
-                  >
-           
-          </SubMenu>
+        
+          <MenuItem href='/capteurs'>
+            <i className='ri-shield-keyhole-line' />
+            <span>Capteurs et Actionneurs</span>
+          </MenuItem>
           
         </MenuSection>
 
         <MenuSection label=''>
-         
-          <SubMenu label='Tanques' 
-                icon={<i className='ri-shield-keyhole-line' />}
-                href='/tanques' 
-          >
-           
-          </SubMenu>
+        
+          <MenuItem href='/tanques'>
+            <i className='ri-shield-keyhole-line' />
+            <span>Tanques</span>
+          </MenuItem>
           
         </MenuSection>
 
         <MenuSection label=''>
-         
-         <SubMenu label='Logs' 
-         icon={<i className='ri-shield-keyhole-line' />}
-         href='/' 
-         >
-          
-         </SubMenu>
-         
-       </MenuSection>
-
-       <MenuSection label=''>
-         
-       </MenuSection>
-
+        
+          <MenuItem href='/logs'>
+            <i className='ri-shield-keyhole-line' />
+            <span>Logs</span>
+          </MenuItem>
+        
+        </MenuSection>
 
       </Menu>
     </ScrollWrapper>
+
   )
 }
 

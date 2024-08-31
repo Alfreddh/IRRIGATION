@@ -9,6 +9,7 @@ import type { ChildrenType } from '../types'
 export type VerticalNavState = {
   width?: number
   isToggled?: boolean
+  isCollapsed?:boolean
   isBreakpointReached?: boolean
   transitionDuration?: number
 }

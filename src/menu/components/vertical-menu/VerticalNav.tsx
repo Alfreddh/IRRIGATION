@@ -69,6 +69,7 @@ const VerticalNav = (props: VerticalNavProps) => {
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
   const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
+ 
 
   // UseEffect, update verticalNav state to set initial values and update values on change
   useEffect(() => {
@@ -80,7 +81,7 @@ const VerticalNav = (props: VerticalNavProps) => {
 
     if (!breakpointReached) {
       updateVerticalNavState({ isToggled: false })
-    }
+    } 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [width, breakpointReached, updateVerticalNavState])
 

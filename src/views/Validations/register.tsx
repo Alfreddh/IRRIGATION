@@ -13,9 +13,13 @@ const formSchema = Joi.object({
     'string.min': 'Le mot de passe doit contenir au moins 6 caractères'
   }),
   repeatPassword: Joi.string().trim().required().valid(Joi.ref('password')).messages({
-    'string.empty': 'La confirmation du mot de passe est obligatoire',
+   'string.empty': 'La confirmation du mot de passe est obligatoire',
     'any.only': 'Les mots de passe ne correspondent pas'
-  })
+  }).when('password', {
+    is: Joi.exist(),
+    then: Joi.valid(Joi.ref('password'))
+  }), 
+  role : Joi.string()
 });
 
 export const validateForm = (formData: any) => {

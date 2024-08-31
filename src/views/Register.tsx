@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useState, ChangeEvent } from 'react'
+import { useState, ChangeEvent, useEffect } from 'react'
 
 
 // Next Imports
@@ -31,6 +31,7 @@ import Logo from '@/components/layout/shared/Logo'
 // Hook Imports
 // import { useImageVariant } from '@/core/hooks/useImageVariant'
 import { validateForm } from './Validations/register'
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material'
 
 const Register = ({ mode }: { mode: Mode }) => {
   // States
@@ -42,7 +43,8 @@ const Register = ({ mode }: { mode: Mode }) => {
     phone: '',
     name: '',
     password: '',
-    repeatPassword: ''
+    repeatPassword: '',
+    role: 'Admin'
   });
 
 
@@ -66,21 +68,29 @@ const Register = ({ mode }: { mode: Mode }) => {
 
   const handleClickShowRepeatPassword = () => setIsRepeatPasswordShown(show => !show)
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    if (formData.password && formData.repeatPassword) {
+      const formErrors = validateForm(formData);
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        repeatPassword: formErrors.repeatPassword || ''
+      }));
+    }
+  }, [formData.password, formData.repeatPassword]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
 
-    setformData({
-      ...formData,
+    setformData(prevData => ({
+      ...prevData,
       [name]: value
-    });
+    }));
 
-    // Valider le champ spécifique
-    const fieldErrors = validateForm({ [name]: value });
-
-    setErrors({
-      ...errors,
+    const fieldErrors = validateForm({ ...formData, [name]: value });
+    setErrors(prevErrors => ({
+      ...prevErrors,
       [name]: fieldErrors[name] || ''
-    });
+    }));
   };
 
 
@@ -88,6 +98,7 @@ const Register = ({ mode }: { mode: Mode }) => {
     e.preventDefault()
 
     const formErrors = validateForm(formData);
+    console.log("Form errors:", formErrors);
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
       return;
@@ -216,6 +227,19 @@ const Register = ({ mode }: { mode: Mode }) => {
                   )
                 }}
               />
+              <FormControl fullWidth>
+                <InputLabel>Role</InputLabel>
+                <Select
+                  label='Role'
+                  name='role'
+                  value={formData.role}
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"User"}>User</MenuItem>
+                  <MenuItem value={"Admin"}>Admin</MenuItem>
+                </Select>
+              </FormControl>
+              
               <Button fullWidth variant='contained' type='submit'>
                 Sign Up
               </Button>

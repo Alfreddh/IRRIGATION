@@ -40,14 +40,14 @@ const menuItemStyles = (theme: Theme): MenuItemStyles => {
       }
     },
     button: ({ active }) => ({
-      paddingBlock: theme.spacing(2),
+      paddingBlock: theme.spacing(1.75),
       '&:has(.MuiChip-root)': {
         paddingBlock: theme.spacing(1.75)
       },
       paddingInlineStart: theme.spacing(5.5),
       paddingInlineEnd: theme.spacing(3.5),
       borderStartEndRadius: 50,
-      borderEndEndRadius: 50,
+      borderEndEndRadius: 20,
       ...(!active && {
         '&:hover, &:focus-visible': {
           backgroundColor: 'var(--mui-palette-action-hover)'

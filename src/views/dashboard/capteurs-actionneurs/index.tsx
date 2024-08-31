@@ -24,7 +24,7 @@ const CapteurSettings = ({ tabContentList }: { tabContentList: { [key: string]: 
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <TabList onChange={handleChange} variant='scrollable'>
-            <Tab label='Capteurs et Actionneurs' icon={<i className='ri-user-3-line' />} iconPosition='start' value='capteurs' />
+            <Tab label='Capteurs et Actionneurs' icon={<i className='ri-user-3-line' />} iconPosition='start' value='capteurs'/>
             <Tab
               label='Capteurs|Serre'
               icon={<i className='ri-notification-3-line' />}
