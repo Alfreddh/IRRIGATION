@@ -44,7 +44,7 @@ const AddTanqueModal: React.FC<AddTanqueModalProps> = ({ open, onClose, onAdd })
         p: 4,
       }}>
         <Typography variant="h6" component="h2" gutterBottom>
-          Add New Type
+          Ajouter un nouveau tanque
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -68,8 +68,8 @@ const AddTanqueModal: React.FC<AddTanqueModalProps> = ({ open, onClose, onAdd })
           />
           {/* Ajoutez d'autres champs selon votre modèle d'utilisateur */}
           <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
-            <Button variant="contained" color='secondary' onClick={onClose} sx={{ mr: 1 }}>Cancel</Button>
-            <Button type="submit" variant="contained" color="primary">Add Tanque Type</Button>
+            <Button variant="contained" color='secondary' onClick={onClose} sx={{ mr: 1 }}>Annuler</Button>
+            <Button type="submit" variant="contained" color="primary">Ajouter</Button>
           </Box>
         </form>
       </Box>

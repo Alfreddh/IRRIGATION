@@ -56,14 +56,14 @@ export const ActionButtons: React.FC<ActionButtonsProps> = ({ userId, onEdit, on
           onClick={onEdit}
           // startIcon={<EditIcon />}
         >
-          Edit
+          Modifier
         </Button>
         <Button
           color="error"
           onClick={() => setOpenDeleteDialog(true)}
           // startIcon={<DeleteIcon />}
         >
-          Delete
+          Supprimer
         </Button>
       </ButtonGroup>
 

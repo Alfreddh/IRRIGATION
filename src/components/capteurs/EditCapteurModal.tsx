@@ -4,8 +4,9 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import type { Capteur } from '@/interfaces';
+import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
 interface EditCapteurModalProps {
   capteur: Capteur;
@@ -17,7 +18,7 @@ const EditCapteurModal: React.FC<EditCapteurModalProps> = ({ capteur, onClose, o
   const [updatedCapteur, setUpdatedCapteur] = useState<Capteur>(capteur);
 
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     setUpdatedCapteur(prevCapteur => ({
       ...prevCapteur,
@@ -58,7 +59,7 @@ const EditCapteurModal: React.FC<EditCapteurModalProps> = ({ capteur, onClose, o
           required
         />
 
-        <TextField
+        {/* <TextField
           margin="dense"
           label="Type"
           name="type"
@@ -66,16 +67,33 @@ const EditCapteurModal: React.FC<EditCapteurModalProps> = ({ capteur, onClose, o
           onChange={handleChange}
           fullWidth
           required
-        />
+        /> */}
+
+
+        <FormControl fullWidth>
+          <InputLabel>Type</InputLabel>
+          <Select
+            label='Type'
+            name='type'
+            value={updatedCapteur.type}
+            onChange={handleChange}
+          >
+            <MenuItem value={"Capteur de Niveau"}>Capteur de Niveau</MenuItem>
+            <MenuItem value={"Capteur d'Humidite"}>Capteur d'Humidité</MenuItem>
+            <MenuItem value={"Electrovanne"}>Electrovanne</MenuItem>
+            <MenuItem value={"Pompe"}>Pompe</MenuItem>
+            <MenuItem value={"Mixeur"}>Mixeur</MenuItem>
+          </Select>
+        </FormControl>
         
         {/* Ajouter d'autres champs si nécessaire */}
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} variant='contained' color="secondary">
-          Cancel
+          Annuler
         </Button>
         <Button onClick={handleSave} variant='contained' color="primary">
-          Save
+          Enregistrer
         </Button>
       </DialogActions>
     </Dialog>

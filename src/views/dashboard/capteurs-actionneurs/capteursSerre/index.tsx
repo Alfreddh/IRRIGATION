@@ -19,8 +19,8 @@ import { ActionButtons } from '@/components/ActionButtons';
 
 import type { CapteurSerre } from '@/interfaces'
 
-import AddCapteurSerreModal from '@/components/capteurs/serre-tanque/AddCapteurSerreModal';
-import EditCapteurSerreModal from '@/components/capteurs/serre-tanque/EditCapteurSerreModal';
+import AddCapteurSerreModal from '@/components/capteurs/capteurs-serre/AddCapteurSerreModal';
+import EditCapteurSerreModal from '@/components/capteurs/capteurs-serre/EditCapteurSerreModal';
 
 type TableBodyRowType = CapteurSerre
 

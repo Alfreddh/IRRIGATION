@@ -73,7 +73,7 @@ const EditCapteurSerreModal: React.FC<EditCapteurSerreModalProps> = ({ capteurSe
 
   return (
     <Dialog open onClose={onClose}>
-      <DialogTitle>Edit Capteurs</DialogTitle>
+      <DialogTitle>Modifier Capteurs</DialogTitle>
       <DialogContent>
         <TextField
           margin="dense"
@@ -123,10 +123,10 @@ const EditCapteurSerreModal: React.FC<EditCapteurSerreModalProps> = ({ capteurSe
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} variant='contained' color="secondary">
-          Cancel
+          Annuler
         </Button>
         <Button onClick={handleSave} variant='contained' color="primary">
-          Save
+          Enregistrer
         </Button>
       </DialogActions>
     </Dialog>

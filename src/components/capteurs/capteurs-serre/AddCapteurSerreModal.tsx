@@ -70,7 +70,7 @@ const AddCapteurSerreModal: React.FC<AddCapteurSerreModalProps> = ({ open, onClo
         p: 4,
       }}>
         <Typography variant="h6" component="h2" gutterBottom>
-          Add New 
+          Ajouter un capteur-serre
         </Typography>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -116,8 +116,8 @@ const AddCapteurSerreModal: React.FC<AddCapteurSerreModalProps> = ({ open, onClo
           </FormControl>
 
           <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
-            <Button variant="contained" color='secondary' onClick={onClose} sx={{ mr: 1 }}>Cancel</Button>
-            <Button type="submit" variant="contained" color="primary">Add </Button>
+            <Button variant="contained" color='secondary' onClick={onClose} sx={{ mr: 1 }}>Annuler</Button>
+            <Button type="submit" variant="contained" color="primary">Ajouter </Button>
           </Box>
         </form>
       </Box>

@@ -48,7 +48,7 @@ const EditTanqueModal: React.FC<EditTanqueModalProps> = ({ tanque, onClose, onSa
 
   return (
     <Dialog open onClose={onClose}>
-      <DialogTitle>Edit Tanque</DialogTitle>
+      <DialogTitle>Modifier Tanque</DialogTitle>
       <DialogContent>
         <TextField
           margin="dense"
@@ -73,10 +73,10 @@ const EditTanqueModal: React.FC<EditTanqueModalProps> = ({ tanque, onClose, onSa
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} variant='contained' color="secondary">
-          Cancel
+          Annuler
         </Button>
         <Button onClick={handleSave} variant='contained' color="primary">
-          Save
+          Enregistrer
         </Button>
       </DialogActions>
     </Dialog>

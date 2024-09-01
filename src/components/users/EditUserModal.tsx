@@ -4,9 +4,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import type { User } from '@/interfaces';
 import { validateForm } from '@/views/Validations/edit-add';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
 interface EditUserModalProps {
   user: User;
@@ -23,7 +24,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onClose, onSave }) 
     password: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     setUpdatedUser(prevUser => ({
       ...prevUser,
@@ -100,14 +101,26 @@ const EditUserModal: React.FC<EditUserModalProps> = ({ user, onClose, onSave }) 
           error={!!errors.password}
           helperText={errors.password}
         />
+         <FormControl fullWidth>
+            <InputLabel>Role</InputLabel>
+            <Select
+              label='Role'
+              name='role'
+              value={updatedUser.role}
+              onChange={handleChange}
+            >
+              <MenuItem value={"User"}>User</MenuItem>
+              <MenuItem value={"Admin"}>Admin</MenuItem>
+            </Select>
+          </FormControl>
         {/* Ajouter d'autres champs si nécessaire */}
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} variant='contained' color="secondary">
-          Cancel
+          Annuler
         </Button>
         <Button onClick={handleSave} variant='contained' color="primary">
-          Save
+          Enregistrer
         </Button>
       </DialogActions>
     </Dialog>

@@ -17,12 +17,12 @@ import { useState } from 'react'
 
 import { ActionButtons } from '@/components/ActionButtons';
 
-import type { CapteurSerre } from '@/interfaces'
+import type { CapteurTanque } from '@/interfaces'
 
-import AddCapteurSerreModal from '@/components/capteurs/serre-tanque/AddCapteurSerreModal';
-import EditCapteurSerreModal from '@/components/capteurs/serre-tanque/EditCapteurSerreModal';
+import AddCapteurTanqueModal from '@/components/capteurs/ capteurs-tanque/AddCapteurTanqueModal';
+import EditCapteurTanqueModal from '@/components/capteurs/ capteurs-tanque/EditCapteurTanqueModal';
 
-type TableBodyRowType = CapteurSerre
+type TableBodyRowType = CapteurTanque
 
 // Vars
 const rowsData: TableBodyRowType[] = [
@@ -59,31 +59,31 @@ const rowsData: TableBodyRowType[] = [
 
 const CapteurTanqueTable = () => {
 
-  const [capteurSerres, setCapteurSerres] = useState<CapteurSerre[]>(rowsData);
-  const [selectedCapteurSerre, setSelectedCapteurSerre] = useState<CapteurSerre | null>(null);
+  const [capteurTanques, setCapteurTanques] = useState<CapteurTanque[]>(rowsData);
+  const [selectedCapteurTanque, setSelectedCapteurTanque] = useState<CapteurTanque | null>(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [openAddModal, setOpenAddModal] = useState(false);
 
 
   // console.log("users first : ", users)
 
-  const handleDelete = (capteurSerreId: string | number) => {
-    setCapteurSerres(prevCapteurSerres => prevCapteurSerres.filter(capteurSerre => capteurSerre.id !== capteurSerreId));
+  const handleDelete = (capteurTanqueId: string | number) => {
+    setCapteurTanques(prevCapteurTanques => prevCapteurTanques.filter(capteurTanque => capteurTanque.id !== capteurTanqueId));
   };
 
-  const handleEdit = (capteurSerre: CapteurSerre) => {
-    setSelectedCapteurSerre(capteurSerre);
+  const handleEdit = (capteurTanque: CapteurTanque) => {
+    setSelectedCapteurTanque(capteurTanque);
     setIsEditModalOpen(true);
   };
 
-  const handleSaveChanges = (updatedCapteurSerre: CapteurSerre) => {
-    setCapteurSerres(prevCapteurSerres => prevCapteurSerres.map(capteurSerre => capteurSerre.id === updatedCapteurSerre.id ? updatedCapteurSerre : capteurSerre));
+  const handleSaveChanges = (updatedCapteurTanque: CapteurTanque) => {
+    setCapteurTanques(prevCapteurTanques => prevCapteurTanques.map(capteurTanque => capteurTanque.id === updatedCapteurTanque.id ? updatedCapteurTanque : capteurTanque));
     setIsEditModalOpen(false);
   };
 
-  const handleAddCapteurSerre = async (newCapteurSerre: Omit<CapteurSerre, 'id'>) => {
+  const handleAddCapteurTanque = async (newCapteurTanque: Omit<CapteurTanque, 'id'>) => {
     try {
-      console.log("newCapteurTanque : ", newCapteurSerre)
+      console.log("newCapteurTanque : ", newCapteurTanque)
       // const createdCulture = await createCulture(newCulture);
       
       // createdCulture est une fonction à écrire qui va permettre de lancer une requête vers l'API
@@ -125,7 +125,7 @@ const CapteurTanqueTable = () => {
             </tr>
           </thead>
           <tbody className={tableStyles.tableBody}>
-            {capteurSerres.map((row, index) => (
+            {capteurTanques.map((row, index) => (
                 <tr key={index} className={tableStyles.tableRow}>
                 <td className={tableStyles.tableCell} data-label="Référence du Tanque">
                     <div className='flex items-center gap-3'>
@@ -138,15 +138,15 @@ const CapteurTanqueTable = () => {
                     </div>
                     </div>
                 </td>
-                {/* <td className={tableStyles.tableCell} data-label="Serre">
-                    <Typography>{row.serre}</Typography>
+                {/* <td className={tableStyles.tableCell} data-label="Tanque">
+                    <Typography>{row.Tanque}</Typography>
                 </td> */}
                 <td className={tableStyles.tableCell} data-label="Capteurs">
                     <div className='flex flex-col gap-1'>
                         {Array.isArray(row.capteurs) ? (
-                        row.capteurs.map((capteurSerre, i) => (
+                        row.capteurs.map((capteurTanque, i) => (
                             <Typography key={i} color='text.primary'>
-                            {capteurSerre}
+                            {capteurTanque}
                             </Typography>
                         ))
                         ) : (
@@ -159,7 +159,7 @@ const CapteurTanqueTable = () => {
                     <ActionButtons
                     userId={row.id}
                     onEdit={() => handleEdit(row)}
-                    onDelete={(capteurSerreId) => handleDelete(capteurSerreId)}
+                    onDelete={(capteurTanqueId) => handleDelete(capteurTanqueId)}
                     />
                 </td>
                 </tr>
@@ -170,18 +170,18 @@ const CapteurTanqueTable = () => {
       </div>
 
       {/* Edit User Modal */}
-        {isEditModalOpen && selectedCapteurSerre && (
-        <EditCapteurSerreModal
-          capteurSerre={selectedCapteurSerre}
+        {isEditModalOpen && selectedCapteurTanque && (
+        <EditCapteurTanqueModal
+          capteurTanque={selectedCapteurTanque}
           onClose={() => setIsEditModalOpen(false)}
           onSave={handleSaveChanges}
         />
       )}
 
-      <AddCapteurSerreModal
+      <AddCapteurTanqueModal
           open={openAddModal}
           onClose={() => setOpenAddModal(false)}
-          onAdd={handleAddCapteurSerre}
+          onAdd={handleAddCapteurTanque}
       />
 
 

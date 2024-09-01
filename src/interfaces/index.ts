@@ -115,3 +115,9 @@ export type UserPayloadObject = {
     reference : string | number
     capteurs: string[]
   }
+
+  export type CapteurTanque = {
+    id: number | string
+    reference : string | number
+    capteurs: string[]
+  }

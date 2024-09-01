@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Modal, Box, TextField, Button, Typography } from '@mui/material';
+import React, { ChangeEvent, useState } from 'react';
+import { Modal, Box, TextField, Button, Typography, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import type { User } from '@/interfaces';
 import { validateForm } from '@/views/Validations/edit-add';
 
@@ -23,7 +23,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ open, onClose, onAdd }) => 
     password: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     setNewUser(prev => ({ ...prev, [name]: value }));
 
@@ -98,10 +98,24 @@ const AddUserModal: React.FC<AddUserModalProps> = ({ open, onClose, onAdd }) => 
             error={!!errors.password}
             helperText={errors.password}
           />
+          <FormControl fullWidth>
+            <InputLabel>Role</InputLabel>
+            <Select
+              label='Role'
+              name='role'
+              value={newUser.role}
+              onChange={handleChange}
+            >
+              <MenuItem value={"User"}>User</MenuItem>
+              <MenuItem value={"Admin"}>Admin</MenuItem>
+            </Select>
+          </FormControl>
+
+
           {/* Ajoutez d'autres champs selon votre modèle d'utilisateur */}
           <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
-            <Button variant="contained" color='secondary' onClick={onClose} sx={{ mr: 1 }}>Cancel</Button>
-            <Button type="submit" variant="contained" color="primary">Add User</Button>
+            <Button variant="contained" color='secondary' onClick={onClose} sx={{ mr: 1 }}>Annuler</Button>
+            <Button type="submit" variant="contained" color="primary">Ajouter</Button>
           </Box>
         </form>
       </Box>
