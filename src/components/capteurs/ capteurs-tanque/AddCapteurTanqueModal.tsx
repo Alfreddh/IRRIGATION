@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Box, TextField, Button, Typography, FormControl, InputLabel, Select, Chip, MenuItem } from '@mui/material';
+import { Modal, Box, TextField, Button, Typography, FormControl, InputLabel, Select, Chip, MenuItem, SelectChangeEvent } from '@mui/material';
 import type { CapteurTanque } from '@/interfaces';
 
 interface AddCapteurTanqueModalProps {
@@ -17,6 +17,8 @@ const AddCapteurTanqueModal: React.FC<AddCapteurTanqueModalProps> = ({ open, onC
 
   const capteursTanquesData = ['Capteur Température', 'Capteur Lumière', 'Capteur pH', 'Capteur Humidité']
 
+  const tanquesList = ['Tanque A', 'Tanque B', 'Tanque C', 'Tanque D', 'Tanque E'] // Cette liste devrait être obtenu par l'API depuis la base de donnée
+
 
   const handleDelete = (value: string) => {
     setNewCapteurTanque(current => ({
@@ -25,7 +27,7 @@ const AddCapteurTanqueModal: React.FC<AddCapteurTanqueModalProps> = ({ open, onC
     }));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     
     if (name === undefined) {
@@ -73,16 +75,25 @@ const AddCapteurTanqueModal: React.FC<AddCapteurTanqueModalProps> = ({ open, onC
           Ajouter un Capteur Tanque
         </Typography>
         <form onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Référence"
-            name="reference"
-            value={newCapteurTanque.reference}
-            onChange={handleChange}
-            required
-          />
-          <FormControl fullWidth>
+
+        <FormControl fullWidth>
+            <InputLabel>Référence du tanque</InputLabel>
+            <Select
+              label='Référence du tanque'
+              name='reference'
+              value={newCapteurTanque.reference}
+              onChange={handleChange}
+            >
+            {tanquesList.map(name => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+            </Select>
+          </FormControl>
+
+
+          <FormControl fullWidth className='mt-3'>
           <InputLabel>Capteurs</InputLabel>
           <Select
             multiple

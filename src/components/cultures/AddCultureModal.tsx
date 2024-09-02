@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Box, TextField, Button, Typography } from '@mui/material';
 import type { Culture } from '@/interfaces';
-
 
 interface AddCultureModalProps {
   open: boolean;
   onClose: () => void;
   onAdd: (newCulture: Omit<Culture, 'id'>) => Promise<void>;
 }
+
+const existingSerresList = ["Serre A", "Serre B", "Serre C", "Serre D", "Serre E"];
 
 const AddCultureModal: React.FC<AddCultureModalProps> = ({ open, onClose, onAdd }) => {
   const [newCulture, setNewCulture] = useState({
@@ -16,16 +17,22 @@ const AddCultureModal: React.FC<AddCultureModalProps> = ({ open, onClose, onAdd 
     superficie: 0
   });
 
+  useEffect(() => {
+    // Déterminer la prochaine serre disponible
+    const lastSerre = existingSerresList[existingSerresList.length - 1];
+    const nextSerre = `Serre ${String.fromCharCode(lastSerre.charCodeAt(6) + 1)}`; // Passer de "Serre D" à "Serre E", etc.
+
+    // Mettre à jour le champ 'serre' avec la prochaine serre
+    setNewCulture(prev => ({ ...prev, serre: nextSerre }));
+  }, []); // Exécuter cet effet une seule fois lors du montage du composant
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewCulture(prev => ({ ...prev, [name]: value }));
-
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
 
     await onAdd(newCulture);
     onClose();
@@ -63,19 +70,18 @@ const AddCultureModal: React.FC<AddCultureModalProps> = ({ open, onClose, onAdd 
             label="Serre"
             name="serre"
             value={newCulture.serre}
-            onChange={handleChange}
-            required
+            disabled // Désactive le champ pour qu'il soit grisé
           />
           <TextField
             fullWidth
             margin="normal"
             label="Superficie"
+            type='number'
             name="superficie"
             value={newCulture.superficie}
             onChange={handleChange}
             required
           />
-          {/* Ajoutez d'autres champs selon votre modèle d'utilisateur */}
           <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
             <Button variant="contained" color='secondary' onClick={onClose} sx={{ mr: 1 }}>Cancel</Button>
             <Button type="submit" variant="contained" color="primary">Add Culture</Button>

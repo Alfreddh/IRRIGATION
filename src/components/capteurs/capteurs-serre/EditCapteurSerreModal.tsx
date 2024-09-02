@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import type { CapteurSerre } from '@/interfaces';
-import { Chip, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Chip, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
 
 
@@ -16,6 +16,9 @@ interface EditCapteurSerreModalProps {
   onClose: () => void;
   onSave: (capteurSerre: CapteurSerre) => void;
 }
+
+const serresList = ['Serre A', 'Serre B', 'Serre C', 'Serre D', 'Serre E'] // Cette liste devrait être obtenu par l'API depuis la base de donnée
+
 
 const EditCapteurSerreModal: React.FC<EditCapteurSerreModalProps> = ({ capteurSerre, onClose, onSave }) => {
   const [updatedCapteurSerre, setUpdatedCapteurSerre] = useState<CapteurSerre>(capteurSerre);
@@ -28,11 +31,11 @@ const EditCapteurSerreModal: React.FC<EditCapteurSerreModalProps> = ({ capteurSe
     setUpdatedCapteurSerre(current => ({
       ...current,
       capteurs: current.capteurs.filter(item => item !== value)
-    }));
+    }));  
   };
 
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>| SelectChangeEvent<string | number>) => {
     const { name, value } = e.target;
     
     if (name === undefined) {
@@ -75,48 +78,54 @@ const EditCapteurSerreModal: React.FC<EditCapteurSerreModalProps> = ({ capteurSe
     <Dialog open onClose={onClose}>
       <DialogTitle>Modifier Capteurs</DialogTitle>
       <DialogContent>
-        <TextField
-          margin="dense"
-          label="Référence"
-          name="reference"
-          value={updatedCapteurSerre.reference}
-          onChange={handleChange}
-          fullWidth
-          required
-        />
-
-        <FormControl fullWidth>
-        <InputLabel>Capteurs</InputLabel>
-        <Select
-          multiple
-          label='Capteurs'
-          name='capteurs'
-          value={updatedCapteurSerre.capteurs}
-          onChange={(e) => handleChange(e as React.ChangeEvent<{ name?: string; value: unknown }>)}
-          renderValue={selected => (
-            <div className='flex flex-wrap gap-2'>
-              {(selected as string[]).map(value => (
-                <Chip
-                  key={value}
-                  clickable
-                  deleteIcon={
-                    <i className='ri-close-circle-fill' onMouseDown={event => event.stopPropagation()} />
-                  }
-                  size='small'
-                  label={value}
-                  onDelete={() => handleDelete(value)}
-                />
-              ))}
-            </div>
-          )}
-        >
-          {capteursSerresData.map(name => (
-            <MenuItem key={name} value={name}>
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
+      <FormControl fullWidth className='mt-3'>
+            <InputLabel>Référence de la serre</InputLabel>
+            <Select
+              label='Référence de la serre'
+              name='reference'
+              value={updatedCapteurSerre.reference}
+              onChange={handleChange}
+            >
+            {serresList.map(name => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+            </Select>
         </FormControl>
+
+        <FormControl fullWidth className='mt-5'>
+          <InputLabel>Capteurs</InputLabel>
+          <Select
+            multiple
+            label='Capteurs'
+            name='capteurs'
+            value={updatedCapteurSerre.capteurs}
+            onChange={(e) => handleChange(e as React.ChangeEvent<{ name?: string; value: unknown }>)}
+            renderValue={selected => (
+              <div className='flex flex-wrap gap-2'>
+                {(selected as string[]).map(value => (
+                  <Chip
+                    key={value}
+                    clickable
+                    deleteIcon={
+                      <i className='ri-close-circle-fill' onMouseDown={event => event.stopPropagation()} />
+                    }
+                    size='small'
+                    label={value}
+                    onDelete={() => handleDelete(value)}
+                  />
+                ))}
+              </div>
+            )}
+          >
+            {capteursSerresData.map(name => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+          </FormControl>
 
 
         {/* Ajouter d'autres champs si nécessaire */}

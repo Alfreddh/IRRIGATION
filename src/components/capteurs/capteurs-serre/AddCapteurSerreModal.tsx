@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Box, TextField, Button, Typography, FormControl, InputLabel, Select, Chip, MenuItem } from '@mui/material';
+import { Modal, Box, TextField, Button, Typography, FormControl, InputLabel, Select, Chip, MenuItem, SelectChangeEvent } from '@mui/material';
 import type { CapteurSerre } from '@/interfaces';
 
 interface AddCapteurSerreModalProps {
@@ -17,6 +17,8 @@ const AddCapteurSerreModal: React.FC<AddCapteurSerreModalProps> = ({ open, onClo
 
   const capteursSerresData = ['Capteur Température', 'Capteur Lumière', 'Capteur pH', 'Capteur Humidité']
 
+  const serresList = ['Serre A', 'Serre B', 'Serre C', 'Serre D', 'Serre E'] // Cette liste devrait être obtenu par l'API depuis la base de donnée
+
 
   const handleDelete = (value: string) => {
     setNewCapteurSerre(current => ({
@@ -25,7 +27,7 @@ const AddCapteurSerreModal: React.FC<AddCapteurSerreModalProps> = ({ open, onClo
     }));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }> | SelectChangeEvent<string>) => {
     const { name, value } = e.target;
     
     if (name === undefined) {
@@ -73,16 +75,25 @@ const AddCapteurSerreModal: React.FC<AddCapteurSerreModalProps> = ({ open, onClo
           Ajouter un capteur-serre
         </Typography>
         <form onSubmit={handleSubmit}>
-          <TextField
-            fullWidth
-            margin="normal"
-            label="Référence"
-            name="reference"
-            value={newCapteurSerre.reference}
-            onChange={handleChange}
-            required
-          />
-          <FormControl fullWidth>
+
+        <FormControl fullWidth>
+            <InputLabel>Référence de la serre</InputLabel>
+            <Select
+              label='Référence de la serre'
+              name='reference'
+              value={newCapteurSerre.reference}
+              onChange={handleChange}
+            >
+            {serresList.map(name => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+            </Select>
+          </FormControl>
+
+
+          <FormControl fullWidth className='mt-5'>
           <InputLabel>Capteurs</InputLabel>
           <Select
             multiple

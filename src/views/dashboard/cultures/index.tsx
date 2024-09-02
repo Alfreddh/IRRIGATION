@@ -24,14 +24,14 @@ const CultureSettings = ({ tabContentList }: { tabContentList: { [key: string]: 
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <TabList onChange={handleChange} variant='scrollable'>
-            <Tab label='Cultures' icon={<i className='ri-user-3-line' />} iconPosition='start' value='plants' />
+            <Tab label='Cultures' icon={<i className='ri-plant-fill' />} iconPosition='start' value='plants' />
             <Tab
               label='Phases de la culture'
-              icon={<i className='ri-notification-3-line' />}
+              icon={<i className='ri-bear-smile-fill' />}
               iconPosition='start'
               value='phase'
             />
-            {/* <Tab label='Connections' icon={<i className='ri-link' />} iconPosition='start' value='connections' /> */}
+            <Tab label='Fertilisant' icon={<i className='ri-fire-fill' />} iconPosition='start' value='fertilisant' />
           </TabList>
         </Grid>
         <Grid item xs={12}>

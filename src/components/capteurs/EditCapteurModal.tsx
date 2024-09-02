@@ -14,6 +14,9 @@ interface EditCapteurModalProps {
   onSave: (capteur: Capteur) => void;
 }
 
+const capteursList = ["Capteur de Niveau", "Capteur d'Humidite", "Electrovanne", "Pompe", "Mixeur"]
+
+
 const EditCapteurModal: React.FC<EditCapteurModalProps> = ({ capteur, onClose, onSave }) => {
   const [updatedCapteur, setUpdatedCapteur] = useState<Capteur>(capteur);
 
@@ -78,11 +81,11 @@ const EditCapteurModal: React.FC<EditCapteurModalProps> = ({ capteur, onClose, o
             value={updatedCapteur.type}
             onChange={handleChange}
           >
-            <MenuItem value={"Capteur de Niveau"}>Capteur de Niveau</MenuItem>
-            <MenuItem value={"Capteur d'Humidite"}>Capteur d'Humidité</MenuItem>
-            <MenuItem value={"Electrovanne"}>Electrovanne</MenuItem>
-            <MenuItem value={"Pompe"}>Pompe</MenuItem>
-            <MenuItem value={"Mixeur"}>Mixeur</MenuItem>
+            {capteursList.map(name => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
         

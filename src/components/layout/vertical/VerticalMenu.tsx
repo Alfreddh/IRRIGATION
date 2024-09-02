@@ -74,7 +74,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
         <MenuSection label=''>
         
           <MenuItem href='/users'>
-            <i className='ri-shield-keyhole-line' />
+            <i className='ri-user-2-fill' />
             <span>Utilisateur</span>
           </MenuItem>
           
@@ -101,7 +101,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
         <MenuSection label=''>
         
           <MenuItem href='/tanques'>
-            <i className='ri-shield-keyhole-line' />
+            <i className='ri-water-percent-line' />
             <span>Tanques</span>
           </MenuItem>
           
@@ -110,7 +110,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
         <MenuSection label=''>
         
           <MenuItem href='/logs'>
-            <i className='ri-shield-keyhole-line' />
+            <i className='ri-blogger-fill' />
             <span>Logs</span>
           </MenuItem>
         

@@ -8,14 +8,14 @@ import dynamic from 'next/dynamic'
 import CultureSettings from '@/views/dashboard/cultures'
 
 const PlantsTab = dynamic(() => import('@/views/dashboard/cultures/plants'))
-// const NotificationsTab = dynamic(() => import('@views/account-settings/notifications'))
- const ConnectionsTab = dynamic(() => import('@/views/dashboard/cultures/phase'))
+const FertilizerTab = dynamic(() => import('@/views/dashboard/cultures/fertilisants'))
+ const PhaseTab = dynamic(() => import('@/views/dashboard/cultures/phase'))
 
 // Vars
 const tabContentList = (): { [key: string]: ReactElement } => ({
   plants: <PlantsTab />,
-//   notifications: <NotificationsTab />,
-  phase: <ConnectionsTab />
+  phase: <PhaseTab />,
+  fertilisant: <FertilizerTab />,
 })
 
 const CultureSettingsPage = () => {

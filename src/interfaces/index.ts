@@ -121,3 +121,11 @@ export type UserPayloadObject = {
     reference : string | number
     capteurs: string[]
   }
+
+  export type Fertilizer = {
+    id: number | string
+    fertilisant: string
+    quantite: number
+    culture: string
+    phase_application_engrais: string
+  }

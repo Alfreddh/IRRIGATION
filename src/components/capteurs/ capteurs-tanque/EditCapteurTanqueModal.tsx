@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import type { CapteurTanque } from '@/interfaces';
-import { Chip, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Chip, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
 
 
@@ -22,6 +22,7 @@ const EditCapteurTanqueModal: React.FC<EditCapteurTanqueModalProps> = ({ capteur
 
 
   const capteursTanquesData = ['Capteur Température', 'Capteur Lumière', 'Capteur pH', 'Capteur Humidité']
+  const tanquesList = ['Tanque A', 'Tanque B', 'Tanque C', 'Tanque D', 'Tanque E'] // Cette liste devrait être obtenu par l'API depuis la base de donnée
 
 
   const handleDelete = (value: string) => {
@@ -32,7 +33,7 @@ const EditCapteurTanqueModal: React.FC<EditCapteurTanqueModalProps> = ({ capteur
   };
 
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | { name?: string; value: unknown }>| SelectChangeEvent<string | number>) => {
     const { name, value } = e.target;
     
     if (name === undefined) {
@@ -75,17 +76,23 @@ const EditCapteurTanqueModal: React.FC<EditCapteurTanqueModalProps> = ({ capteur
     <Dialog open onClose={onClose}>
       <DialogTitle>Modifier les capteurs</DialogTitle>
       <DialogContent>
-        <TextField
-          margin="dense"
-          label="Référence"
-          name="reference"
-          value={updatedCapteurTanque.reference}
-          onChange={handleChange}
-          fullWidth
-          required
-        />
+      <FormControl fullWidth className='mt-3'>
+            <InputLabel>Référence du tanque</InputLabel>
+            <Select
+              label='Référence du tanque'
+              name='reference'
+              value={updatedCapteurTanque.reference}
+              onChange={handleChange}
+            >
+            {tanquesList.map(name => (
+              <MenuItem key={name} value={name}>
+                {name}
+              </MenuItem>
+            ))}
+            </Select>
+        </FormControl>
 
-        <FormControl fullWidth>
+        <FormControl fullWidth className='mt-3'>
         <InputLabel>Capteurs</InputLabel>
         <Select
           multiple

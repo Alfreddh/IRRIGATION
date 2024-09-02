@@ -15,9 +15,14 @@ const CultureDistributionChart: React.FC = () => {
       if (!data || !data.cultureData) return { series: [], labels: [] };
   
       const cultureData: CultureData[] = data.cultureData;
-      const totalArea = cultureData.reduce((sum, culture) => sum + culture.area, 0);
+      // const totalArea = cultureData.reduce((sum, culture) => sum + culture.area, 0);
   
-      const series = cultureData.map(culture => (culture.area / totalArea) * 100);
+      // // const series = cultureData.map(culture => (culture.area / totalArea) * 100);
+      // const series = cultureData.map(culture => (culture.area / totalArea) * 100);
+      // const labels = cultureData.map(culture => culture.name);
+
+      // Utiliser directement les valeurs de superficie pour la série
+      const series = cultureData.map(culture => culture.area);
       const labels = cultureData.map(culture => culture.name);
   
       return { series, labels };
@@ -48,7 +53,7 @@ const CultureDistributionChart: React.FC = () => {
       }],
       tooltip: {
         y: {
-          formatter: (value) => `${value.toFixed(1)}%`
+          formatter: (value) => `${value.toFixed(1)}m²`
         }
       },
       dataLabels: {

@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import type { Culture } from '@/interfaces';
-import { validateForm } from '@/views/Validations/edit-add';
+
 
 interface EditCultureModalProps {
   culture: Culture;
@@ -66,12 +66,14 @@ const EditCultureModal: React.FC<EditCultureModalProps> = ({ culture, onClose, o
           value={updatedCulture.serre}
           onChange={handleChange}
           fullWidth
+          disabled
         />
 
         <TextField
           margin="dense"
           label="Superficie"
           name="superficie"
+          type='number'
           value={updatedCulture.superficie}
           onChange={handleChange}
           fullWidth

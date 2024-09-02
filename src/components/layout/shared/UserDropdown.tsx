@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import type { MouseEvent } from 'react'
 
 // Next Imports
@@ -21,6 +21,10 @@ import Divider from '@mui/material/Divider'
 import MenuItem from '@mui/material/MenuItem'
 import Button from '@mui/material/Button'
 
+// Custom Imports
+import EditUserModal from './EditProfileModal'
+import type { User } from '@/interfaces'
+
 // Styled component for badge content
 const BadgeContentSpan = styled('span')({
   width: 8,
@@ -34,6 +38,8 @@ const BadgeContentSpan = styled('span')({
 const UserDropdown = () => {
   // States
   const [open, setOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [user, setUser] = useState<User | null>(null) // État pour stocker les données utilisateur
 
   // Refs
   const anchorRef = useRef<HTMLDivElement>(null)
@@ -41,8 +47,34 @@ const UserDropdown = () => {
   // Hooks
   const router = useRouter()
 
+  // Fetch user data from API
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        // const response = await fetch('/api/user') // Remplacez par votre endpoint API
+        // const userData = await response.json()
+          // Simulate User Data
+        const userData: User = {
+          id: 1,
+          name: 'John Doe',
+          phone: '123-456-7890',
+          password: 'password123',
+          role: 'Admin',
+        }
+
+        setUser(userData)
+      } catch (error) {
+        console.error('Error fetching user data:', error)
+      }
+    }
+
+    fetchUser()
+  }, [])
+
+  
+
   const handleDropdownOpen = () => {
-    !open ? setOpen(true) : setOpen(false)
+    setOpen(!open)
   }
 
   const handleDropdownClose = (event?: MouseEvent<HTMLLIElement> | (MouseEvent | TouchEvent), url?: string) => {
@@ -57,6 +89,45 @@ const UserDropdown = () => {
     setOpen(false)
   }
 
+  const handleEditProfile = () => {
+    setOpen(false) // Fermer le dropdown
+    setModalOpen(true) // Ouvrir le modal d'édition
+  }
+
+  const handleModalClose = () => {
+    setModalOpen(false)
+  }
+
+  const handleModalSave = async (updatedUser: User) => {
+    try {
+      // // Mettre à jour l'utilisateur via l'API
+      // const response = await fetch(`/api/user/${updatedUser.id}`, {
+      //   method: 'PUT',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify(updatedUser)
+      // })
+
+      // if (!response.ok) {
+      //   throw new Error('Failed to update user')
+      // }
+
+      // const updatedUserData = await response.json()
+
+      // // Mettre à jour l'état local avec les nouvelles données
+      // setUser(updatedUserData)
+      setUser(updatedUser)
+      setModalOpen(false)
+    } catch (error) {
+      console.error('Error updating user:', error)
+    }
+  }
+
+  if (!user) {
+    return <div>Loading...</div>
+  }
+
   return (
     <>
       <Badge
@@ -68,8 +139,8 @@ const UserDropdown = () => {
       >
         <Avatar
           ref={anchorRef}
-          alt='John Doe'
-          src='/images/avatars/1.png'
+          alt={user.name}
+          src=''  // Ajouter l'URL de l'avatar si disponible
           onClick={handleDropdownOpen}
           className='cursor-pointer bs-[38px] is-[38px]'
         />
@@ -93,31 +164,19 @@ const UserDropdown = () => {
               <ClickAwayListener onClickAway={e => handleDropdownClose(e as MouseEvent | TouchEvent)}>
                 <MenuList>
                   <div className='flex items-center plb-2 pli-4 gap-2' tabIndex={-1}>
-                    <Avatar alt='John Doe' src='/images/avatars/1.png' />
+                    <Avatar alt={user.name} src='' />  {/* Ajouter l'URL de l'avatar si disponible */}
                     <div className='flex items-start flex-col'>
                       <Typography className='font-medium' color='text.primary'>
-                        John Doe
+                        {user.name}
                       </Typography>
-                      <Typography variant='caption'>Admin</Typography>
+                      <Typography variant='caption'>{user.role}</Typography>
                     </div>
                   </div>
                   <Divider className='mlb-1' />
-                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e)}>
+                  <MenuItem className='gap-3' onClick={handleEditProfile}>
                     <i className='ri-user-3-line' />
-                    <Typography color='text.primary'>My Profile</Typography>
+                    <Typography color='text.primary'>Mon Profil</Typography>
                   </MenuItem>
-                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e)}>
-                    <i className='ri-settings-4-line' />
-                    <Typography color='text.primary'>Settings</Typography>
-                  </MenuItem>
-                  {/* <MenuItem className='gap-3' onClick={e => handleDropdownClose(e)}>
-                    <i className='ri-money-dollar-circle-line' />
-                    <Typography color='text.primary'>Pricing</Typography>
-                  </MenuItem>
-                  <MenuItem className='gap-3' onClick={e => handleDropdownClose(e)}>
-                    <i className='ri-question-line' />
-                    <Typography color='text.primary'>FAQ</Typography>
-                  </MenuItem> */}
                   <div className='flex items-center plb-2 pli-4'>
                     <Button
                       fullWidth
@@ -137,6 +196,15 @@ const UserDropdown = () => {
           </Fade>
         )}
       </Popper>
+
+      {/* Modal d'édition du profil */}
+      {modalOpen && user && (
+        <EditUserModal
+          user={user}
+          onClose={handleModalClose}
+          onSave={handleModalSave}
+        />
+      )}
     </>
   )
 }

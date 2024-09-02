@@ -36,7 +36,7 @@ const DashboardView = () => {
         </Grid>
         <Grid item xs={6} md={4}>
           <DashboardCard
-            title="Capteurs"
+            title="Capteurs et Actionneurs"
             color="#F44336"
             icon={<DeviceThermostat />}
             link="/capteurs"
