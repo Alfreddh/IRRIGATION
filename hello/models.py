@@ -1,132 +1,145 @@
 from django.db import models
 
 
-class Planche(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-    
-#Capteur
 class Capteur(models.Model):
     id = models.AutoField(primary_key=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    date_ajout = models.DateTimeField(auto_now_add=True)
+    type = models.CharField(max_length=255)
     reference = models.CharField(max_length=255, unique=True)
-    
-    def __str__(self):
-        return f"{self.reference}"
-    
- 
-class SerreCulture(models.Model):
-    id = models.AutoField(primary_key=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    superficie = models.ForeignKey(Planche, on_delete=models.CASCADE)
-    numero_serre = models.CharField(max_length=8, unique=True)   
+    protocol_communication = models.CharField(max_length=255, null=True, blank=True)
+    precision = models.FloatField(null=True, blank=True)
+    etat = models.CharField(max_length=255, null=True, blank=True)
+    fabricant = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.superficie}"
+        return self.reference
 
 
-class Capteur_Serre(models.Model):
+class Serre(models.Model):
     id = models.AutoField(primary_key=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
-    serre_id = models.ForeignKey(SerreCulture, on_delete=models.CASCADE)
-    capteur_id = models.ForeignKey(Capteur, on_delete=models.CASCADE)
-   
-
-    def __str__(self):
-        return f"{self.serre_id}"
-   
-class Culture(models.Model):
-    id = models.AutoField(primary_key=True)
-    nom_culture = models.CharField(max_length=100)
+    superficie = models.FloatField()
     date_ajout = models.DateTimeField(auto_now_add=True)
-   
-    
+    numero_serre = models.CharField(max_length=255, unique=True)
+
     def __str__(self):
-        return self.nom_culture
+        return f"Serre {self.numero_serre}"
 
-class CultureSurface(models.Model):
-    id = models.AutoField(primary_key=True)
-    surface_culture_id = models.ForeignKey(SerreCulture, on_delete=models.CASCADE)
-    culture_id = models.ForeignKey(Culture, on_delete=models.CASCADE)
 
-class PhaseCulture(models.Model):
+class CapteurSerre(models.Model):
     id = models.AutoField(primary_key=True)
-    culture_id = models.ForeignKey(Culture, on_delete=models.CASCADE)
-    phase = models.CharField(max_length=255)
-    periode_phase = models.IntegerField()
     date_ajout = models.DateTimeField(auto_now_add=True)
+    serre = models.ForeignKey(Serre, on_delete=models.CASCADE)
+    capteur = models.ForeignKey(Capteur, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.phase
-    
-class PhaseFertilisation(models.Model):
-    id = models.AutoField(primary_key=True)
-    culture_id = models.ForeignKey(Culture, on_delete=models.CASCADE)
-    phase_fertilisation = models.CharField(max_length=255)
-    periode_fertilisation = models.IntegerField()
-    date_ajout = models.DateTimeField(auto_now_add=True)
+        return f"Capteur {self.capteur} dans Serre {self.serre}"
 
-    def __str__(self):
-        return self.phase_fertilisation
-    
-
-class Fertilisant(models.Model):
-    id = models.AutoField(primary_key=True)
-    fertilisant = models.CharField(max_length=255)
-    quantite = models.FloatField()
-    phase_fertilisation_id = models.ForeignKey(PhaseFertilisation, on_delete=models.CASCADE, null=True, blank=True)
-    date_ajout = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.fertilisant
-
-class Fertilisation(models.Model):
-    id = models.AutoField(primary_key=True)
-    date_debut = models.DateTimeField()
-    date_fin = models.DateTimeField()
-    phase_fertilisation_id = models.ForeignKey(PhaseFertilisation, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"Fertilisation {self.id}"
 
 class Tanque(models.Model):
     id = models.AutoField(primary_key=True)
     type = models.CharField(max_length=255, null=True, blank=True)
     date_ajout = models.DateTimeField(auto_now_add=True)
-    capacite = models.CharField(max_length=255)
+    capacite = models.FloatField()
 
     def __str__(self):
         return f"Tanque {self.id}"
 
+
+class CapteurTanque(models.Model):
+    id = models.AutoField(primary_key=True)
+    tanque = models.ForeignKey(Tanque, on_delete=models.CASCADE)
+    capteur = models.ForeignKey(Capteur, on_delete=models.CASCADE)
+    date_ajout = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Capteur {self.capteur} dans Tanque {self.tanque}"
+
+
+class Culture(models.Model):
+    id = models.AutoField(primary_key=True)
+    nom_culture = models.CharField(max_length=100)
+    date_ajout = models.DateTimeField(auto_now_add=True)
+    archive = models.BooleanField(default=False)
+    humidite_maximal = models.IntegerField()
+    humidite_minimal = models.IntegerField()
+
+    def __str__(self):
+        return self.nom_culture
+
+
+class Fertilisant(models.Model):
+    id = models.AutoField(primary_key=True)
+    fertilisant = models.CharField(max_length=255)
+    quantite = models.FloatField()
+    date_ajout = models.DateTimeField(auto_now_add=True)
+    periode = models.IntegerField()
+    culture = models.ForeignKey(Culture, on_delete=models.CASCADE)
+    phase_application_engrais = models.CharField(max_length=255)
+    periode_debut = models.IntegerField(null=True, blank=True)
+    periode_fin = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return self.fertilisant
+
+
+class FertilisationEffectue(models.Model):
+    id = models.AutoField(primary_key=True)
+    date_debut = models.DateTimeField()
+    date_fin = models.DateTimeField()
+    serre_culture = models.ForeignKey('SerreCulture', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Fertilisation {self.id}"
+
+
 class FrequenceRemplissage(models.Model):
     id = models.AutoField(primary_key=True)
     periode_remplissage = models.DateTimeField()
-    tanque_id = models.ForeignKey(Tanque, on_delete=models.CASCADE)
+    quantite_envoye = models.FloatField()
+    culture = models.ForeignKey(Culture, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Frequence de remplissage {self.id}"
+        return f"Frequence Remplissage {self.id}"
 
-class Humidite(models.Model):
+
+class HumiditeSerre(models.Model):
     id = models.AutoField(primary_key=True)
     valeur = models.FloatField()
-    serre_culture_id = models.ForeignKey(SerreCulture, on_delete=models.CASCADE)
+    capteur = models.ForeignKey(Capteur, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"Humidite de la serre {self.id}"
+        return f"Humidité Serre {self.id}"
 
 
+class NiveauTanque(models.Model):
+    id = models.AutoField(primary_key=True)
+    valeur = models.IntegerField()
+    date_ajout = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Niveau Tanque {self.id}"
 
 
 class PhaseCroissance(models.Model):
     id = models.AutoField(primary_key=True)
-    culture_id = models.ForeignKey(Culture, on_delete=models.CASCADE)
     phase_croissance = models.CharField(max_length=255)
-    periode_croissance = models.IntegerField()
+    periode = models.IntegerField()
+    culture = models.ForeignKey(Culture, on_delete=models.CASCADE)
     date_ajout = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.phase_croissance
+
+
+class SerreCulture(models.Model):
+    id = models.AutoField(primary_key=True)
+    serre = models.ForeignKey(Serre, on_delete=models.CASCADE)
+    culture = models.ForeignKey(Culture, on_delete=models.CASCADE)
+    date_ajout = models.DateTimeField(auto_now_add=True)
+    phase_culture = models.ForeignKey(PhaseCroissance, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Serre {self.serre} - Culture {self.culture}"
+
+
+

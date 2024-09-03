@@ -1,163 +1,120 @@
-from hello.models import (
-    Capteur, Capteur_Serre, Culture, CultureSurface,
-    Fertilisant, Fertilisation, FrequenceRemplissage,
-    Humidite, PhaseCroissance, PhaseCulture,
-    PhaseFertilisation, SerreCulture, Tanque
-)
 from rest_framework import serializers
+from hello.models import (
+    Capteur, Serre, CapteurSerre, Tanque, CapteurTanque,
+    Culture, Fertilisant, FertilisationEffectue, FrequenceRemplissage,
+    HumiditeSerre, NiveauTanque, PhaseCroissance, SerreCulture
+)
 
-class CultureSurfaceSerializer(serializers.ModelSerializer):
-    nom_culture = serializers.CharField(source='culture_id.nom_culture')
-    superficie = serializers.FloatField(source='surface_culture_id.superficie')
-
-    class Meta:
-        model = CultureSurface
-        fields = ['nom_culture', 'superficie']
-
-class CultureSurfaceSerializerAdd(serializers.ModelSerializer):
-    nom_culture = serializers.CharField(max_length=100)
-    superficie = serializers.FloatField()
-
-    class Meta:
-        model = CultureSurface
-        fields = ['nom_culture', 'superficie']
-
-
-class SerreCultureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SerreCulture
-        fields = ['superficie', 'numero_serre']
-
-
-class CultureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Culture
-        fields = ['nom_culture']
-
-
-class TanqueSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tanque
-        fields = ['type', 'capacite']
-
-
+# Serializer for Capteur model
 class CapteurSerializer(serializers.ModelSerializer):
     class Meta:
         model = Capteur
-        fields = ['reference']
+        fields = ['id', 'date_ajout', 'type', 'reference', 'protocol_communication', 'precision', 'etat', 'fabricant']
 
 
+# Serializer for Serre model
+class SerreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Serre
+        fields = ['id', 'superficie', 'date_ajout', 'numero_serre']
+
+
+# Serializer for CapteurSerre model
 class CapteurSerreSerializer(serializers.ModelSerializer):
-    reference = serializers.CharField(source='capteur_id.reference')
-    numero_serre = serializers.CharField(source='serre_id.numero_serre')
+    capteur_reference = serializers.CharField(source='capteur.reference')
+    serre_numero = serializers.CharField(source='serre.numero_serre')
 
     class Meta:
-        model = Capteur_Serre
-        fields = ['reference', 'numero_serre']
+        model = CapteurSerre
+        fields = ['id', 'date_ajout', 'capteur_reference', 'serre_numero']
 
 
-class CapteurSerreSerializerAdd(serializers.ModelSerializer):
-    reference = serializers.CharField(max_length=255)
-    numero_serre = serializers.CharField(max_length=8)
-
-    class Meta:
-        model = Capteur_Serre
-        fields = ['reference', 'numero_serre']
-
-
-class PhaseCultureSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PhaseCulture
-        fields = ['culture_id', 'phase', 'periode_phase']
-
-
-class PhaseFertilisationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PhaseFertilisation
-        fields = ['culture_id', 'phase_fertilisation', 'periode_fertilisation']
-
-
-class PhaseFertilisationSerializerAdd(serializers.ModelSerializer):
-    class Meta:
-        model = PhaseFertilisation
-        fields = ['culture_id', 'phase_fertilisation', 'periode_fertilisation']
-
-
-class PhaseCroissanceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PhaseCroissance
-        fields = ['culture_id', 'phase_croissance', 'periode_croissance']
-
-
-class PhaseCroissanceSerializerAdd(serializers.ModelSerializer):
-    class Meta:
-        model = PhaseCroissance
-        fields = ['culture_id', 'phase_croissance', 'periode_croissance']
-
-
-class FertilisantSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Fertilisant
-        fields = ['fertilisant', 'quantite', 'phase_fertilisation_id']
-
-
-class FertilisantSerializerAdd(serializers.ModelSerializer):
-    class Meta:
-        model = Fertilisant
-        fields = ['fertilisant', 'quantite', 'phase_fertilisation_id']
-
-
-class FertilisationSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Fertilisation
-        fields = ['date_debut', 'date_fin', 'phase_fertilisation_id']
-
-
-class FertilisationSerializerAdd(serializers.ModelSerializer):
-    class Meta:
-        model = Fertilisation
-        fields = ['date_debut', 'date_fin', 'phase_fertilisation_id']
-
-
-class HumiditeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Humidite
-        fields = ['serre_culture_id', 'valeur']
-
-
-class HumiditeSerializerAdd(serializers.ModelSerializer):
-    class Meta:
-        model = Humidite
-        fields = ['serre_culture_id', 'valeur']
-
-
-class FrequenceRemplissageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = FrequenceRemplissage
-        fields = ['periode_remplissage', 'tanque_id']
-
-
-class FrequenceRemplissageSerializerAdd(serializers.ModelSerializer):
-    class Meta:
-        model = FrequenceRemplissage
-        fields = ['periode_remplissage', 'tanque_id']
-
-class CapteurSerreSerializer(serializers.ModelSerializer):
-    reference = serializers.CharField(source='capteur_id.reference')
-    numero_serre = serializers.CharField(source='serre_id.numero_serre')
-
-    class Meta:
-        model = Capteur_Serre
-        fields = ['id', 'timestamp', 'reference', 'numero_serre']
-
-
-from rest_framework import serializers
-from hello.models import Capteur_Serre
-
+# Serializer for CapteurSerre Add (when creating new records)
 class CapteurSerreSerializerAdd(serializers.ModelSerializer):
     capteur_id = serializers.IntegerField()
     serre_id = serializers.IntegerField()
 
     class Meta:
-        model = Capteur_Serre
+        model = CapteurSerre
         fields = ['capteur_id', 'serre_id']
+
+
+# Serializer for Tanque model
+class TanqueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tanque
+        fields = ['id', 'type', 'capacite', 'date_ajout']
+
+
+# Serializer for CapteurTanque model
+class CapteurTanqueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CapteurTanque
+        fields = ['id', 'tanque', 'capteur', 'date_ajout']
+
+
+# Serializer for Culture model
+class CultureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Culture
+        fields = ['id', 'nom_culture', 'date_ajout', 'archive', 'humidite_maximal', 'humidite_minimal']
+
+
+# Serializer for Fertilisant model
+class FertilisantSerializer(serializers.ModelSerializer):
+    culture_name = serializers.CharField(source='culture.nom_culture')
+
+    class Meta:
+        model = Fertilisant
+        fields = ['id', 'fertilisant', 'quantite', 'periode', 'culture_name', 'phase_application_engrais', 'periode_debut', 'periode_fin']
+
+
+# Serializer for FertilisationEffectue model
+class FertilisationEffectueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FertilisationEffectue
+        fields = ['id', 'date_debut', 'date_fin', 'serre_culture']
+
+
+# Serializer for FrequenceRemplissage model
+class FrequenceRemplissageSerializer(serializers.ModelSerializer):
+    culture_name = serializers.CharField(source='culture.nom_culture')
+
+    class Meta:
+        model = FrequenceRemplissage
+        fields = ['id', 'periode_remplissage', 'quantite_envoye', 'culture_name']
+
+
+# Serializer for HumiditeSerre model
+class HumiditeSerreSerializer(serializers.ModelSerializer):
+    capteur_reference = serializers.CharField(source='capteur.reference')
+
+    class Meta:
+        model = HumiditeSerre
+        fields = ['id', 'valeur', 'capteur_reference']
+
+
+# Serializer for NiveauTanque model
+class NiveauTanqueSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NiveauTanque
+        fields = ['id', 'valeur', 'date_ajout']
+
+
+# Serializer for PhaseCroissance model
+class PhaseCroissanceSerializer(serializers.ModelSerializer):
+    culture_name = serializers.CharField(source='culture.nom_culture')
+
+    class Meta:
+        model = PhaseCroissance
+        fields = ['id', 'phase_croissance', 'periode', 'culture_name', 'date_ajout']
+
+
+# Serializer for SerreCulture model
+class SerreCultureSerializer(serializers.ModelSerializer):
+    culture_name = serializers.CharField(source='culture.nom_culture')
+    serre_numero = serializers.CharField(source='serre.numero_serre')
+
+    class Meta:
+        model = SerreCulture
+        fields = ['id', 'serre_numero', 'culture_name', 'phase_culture', 'date_ajout']

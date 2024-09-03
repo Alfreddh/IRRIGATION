@@ -1,39 +1,38 @@
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-
-from accounts.models import Users
+from .models import Users
 
 
 class UsersCreateSerializer(serializers.ModelSerializer):
-    """Serializer for creating user."""
+    """Serializer for creating a user."""
     class Meta:
         model = Users
-        fields = ('id', 'phone', 'code', 'type', 'password')
+        fields = ('id', 'phone', 'username', 'type', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = Users.objects.create_user(
             phone=validated_data['phone'],
-            code=validated_data['code'],
+            username=validated_data['username'],
             password=validated_data['password'],
             type=validated_data.get('type', 'standard'),
         )
         return user
 
+
 class UsersUpdateSerializer(serializers.ModelSerializer):
-    """Serializer for updating user."""
+    """Serializer for updating a user."""
     class Meta:
         model = Users
-        fields = ('id', 'phone', 'code', 'type')
+        fields = ('id', 'phone', 'username', 'type')
 
 
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
         fields = [
-            'id', 'phone', 'code', 'type', 'date_ajout',
-            'is_active', 'is_admin', 'is_staff_member',
-            'is_superuser'
+            'id', 'phone', 'username', 'type', 'date_ajout',
+            'is_active', 'is_admin', 'is_staff_member', 'is_superuser'
         ]
         read_only_fields = ['id', 'date_ajout', 'is_admin', 'is_staff_member', 'is_superuser']
 
@@ -45,6 +44,7 @@ class UsersSerializer(serializers.ModelSerializer):
             validated_data.pop('is_superuser', None)
 
         return super().update(instance, validated_data)
+
 
 class CustomLoginSerializer(serializers.Serializer):
     phone = serializers.CharField()
