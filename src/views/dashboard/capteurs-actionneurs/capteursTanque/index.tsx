@@ -29,27 +29,27 @@ const rowsData: TableBodyRowType[] = [
     {
       id: 1,
       reference: "Tanque 001",
-      capteurs: ["Capteur Température", "Capteur Humidité"]
+      capteurs: ["Capteur Niveau"]
     },
     {
       id: 2,
       reference: "Tanque 002",
-      capteurs: ["Capteur Lumière", "Capteur CO2"]
+      capteurs: ["Capteur Niveau"]
     },
     {
       id: 3,
       reference: "Tanque 003",
-      capteurs: ["Capteur pH", "Capteur Nutriments", "Capteur Humidité"]
+      capteurs: ["Capteur Niveau"]
     },
     {
       id: 4,
       reference: "Tanque 004",
-      capteurs: ["Capteur Température", "Capteur CO2"]
+      capteurs: ["Capteur Niveau"]
     },
     {
       id: 5,
       reference: "Tanque 005",
-      capteurs: ["Capteur Lumière", "Capteur Humidité", "Capteur Nutriments"]
+      capteurs: ["Capteur Niveau"]
     }
   ];
   

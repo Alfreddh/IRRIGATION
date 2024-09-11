@@ -30,24 +30,17 @@ const rowsData: TableBodyRowType[] = [
     {
       id: 1,
       culture: "Tomates",
-      phases: ["Préparation du sol", "Semis", "Croissance", "Récolte"],
+      phases: ["Germination", "Croissance végétale", "Récolte", "Floraison", "Fructification"],
       startPeriod: new Date("2024-03-01"),
       endPeriod: new Date("2024-07-15")
     },
-    {
-      id: 2,
-      culture: "Concombres",
-      phases: ["Semis", "Irrigation", "Croissance", "Récolte"],
-      startPeriod: new Date("2024-04-10"),
-      endPeriod: new Date("2024-08-20")
-    },
-    {
-      id: 3,
-      culture: "Laitue",
-      phases: ["Préparation du sol", "Semis", "Arrosage", "Récolte"],
-      startPeriod: new Date("2024-02-15"),
-      endPeriod: new Date("2024-06-01")
-    },
+    // {
+    //   id: 3,
+    //   culture: "Laitue",
+    //   phases: ["Préparation du sol", "Semis", "Arrosage", "Récolte"],
+    //   startPeriod: new Date("2024-02-15"),
+    //   endPeriod: new Date("2024-06-01")
+    // },
     {
       id: 4,
       culture: "Poivrons",
@@ -55,83 +48,91 @@ const rowsData: TableBodyRowType[] = [
       startPeriod: new Date("2024-04-01"),
       endPeriod: new Date("2024-09-10")
     },
+
     {
-      id: 5,
-      culture: "Aubergines",
-      phases: ["Préparation du sol", "Semis", "Entretien", "Récolte"],
-      startPeriod: new Date("2024-03-20"),
-      endPeriod: new Date("2024-08-05")
-    },
-    {
-      id: 6,
-      culture: "Radis",
-      phases: ["Semis", "Arrosage", "Croissance", "Récolte"],
-      startPeriod: new Date("2024-01-10"),
-      endPeriod: new Date("2024-04-25")
-    },
-    {
-      id: 7,
-      culture: "Épinards",
-      phases: ["Préparation du sol", "Semis", "Irrigation", "Récolte"],
-      startPeriod: new Date("2024-03-05"),
-      endPeriod: new Date("2024-07-30")
-    },
-    {
-      id: 8,
-      culture: "Carottes",
-      phases: ["Préparation du sol", "Semis", "Désherbage", "Récolte"],
-      startPeriod: new Date("2024-02-25"),
-      endPeriod: new Date("2024-07-10")
-    },
-    {
-      id: 9,
-      culture: "Fraises",
-      phases: ["Préparation du sol", "Plantation", "Croissance", "Récolte"],
-      startPeriod: new Date("2024-04-15"),
-      endPeriod: new Date("2024-09-01")
-    },
-    {
-      id: 10,
-      culture: "Basilic",
+      id: 2,
+      culture: "Tomates",
       phases: ["Semis", "Irrigation", "Croissance", "Récolte"],
-      startPeriod: new Date("2024-05-01"),
-      endPeriod: new Date("2024-09-15")
-    },
-    {
-      id: 11,
-      culture: "Persil",
-      phases: ["Semis", "Arrosage", "Entretien", "Récolte"],
-      startPeriod: new Date("2024-02-20"),
-      endPeriod: new Date("2024-06-15")
-    },
-    {
-      id: 12,
-      culture: "Choux",
-      phases: ["Préparation du sol", "Plantation", "Croissance", "Récolte"],
-      startPeriod: new Date("2024-03-10"),
-      endPeriod: new Date("2024-08-25")
-    },
-    {
-      id: 13,
-      culture: "Haricots",
-      phases: ["Préparation du sol", "Semis", "Désherbage", "Récolte"],
-      startPeriod: new Date("2024-04-05"),
+      startPeriod: new Date("2024-04-10"),
       endPeriod: new Date("2024-08-20")
     },
-    {
-      id: 14,
-      culture: "Céleri",
-      phases: ["Semis", "Irrigation", "Entretien", "Récolte"],
-      startPeriod: new Date("2024-03-01"),
-      endPeriod: new Date("2024-07-15")
-    },
-    {
-      id: 15,
-      culture: "Coriandre",
-      phases: ["Préparation du sol", "Semis", "Croissance", "Récolte"],
-      startPeriod: new Date("2024-02-10"),
-      endPeriod: new Date("2024-05-30")
-    }
+    // {
+    //   id: 5,
+    //   culture: "Aubergines",
+    //   phases: ["Préparation du sol", "Semis", "Entretien", "Récolte"],
+    //   startPeriod: new Date("2024-03-20"),
+    //   endPeriod: new Date("2024-08-05")
+    // },
+    // {
+    //   id: 6,
+    //   culture: "Radis",
+    //   phases: ["Semis", "Arrosage", "Croissance", "Récolte"],
+    //   startPeriod: new Date("2024-01-10"),
+    //   endPeriod: new Date("2024-04-25")
+    // },
+    // {
+    //   id: 7,
+    //   culture: "Épinards",
+    //   phases: ["Préparation du sol", "Semis", "Irrigation", "Récolte"],
+    //   startPeriod: new Date("2024-03-05"),
+    //   endPeriod: new Date("2024-07-30")
+    // },
+    // {
+    //   id: 8,
+    //   culture: "Carottes",
+    //   phases: ["Préparation du sol", "Semis", "Désherbage", "Récolte"],
+    //   startPeriod: new Date("2024-02-25"),
+    //   endPeriod: new Date("2024-07-10")
+    // },
+    // {
+    //   id: 9,
+    //   culture: "Fraises",
+    //   phases: ["Préparation du sol", "Plantation", "Croissance", "Récolte"],
+    //   startPeriod: new Date("2024-04-15"),
+    //   endPeriod: new Date("2024-09-01")
+    // },
+    // {
+    //   id: 10,
+    //   culture: "Basilic",
+    //   phases: ["Semis", "Irrigation", "Croissance", "Récolte"],
+    //   startPeriod: new Date("2024-05-01"),
+    //   endPeriod: new Date("2024-09-15")
+    // },
+    // {
+    //   id: 11,
+    //   culture: "Persil",
+    //   phases: ["Semis", "Arrosage", "Entretien", "Récolte"],
+    //   startPeriod: new Date("2024-02-20"),
+    //   endPeriod: new Date("2024-06-15")
+    // },
+    // {
+    //   id: 12,
+    //   culture: "Choux",
+    //   phases: ["Préparation du sol", "Plantation", "Croissance", "Récolte"],
+    //   startPeriod: new Date("2024-03-10"),
+    //   endPeriod: new Date("2024-08-25")
+    // },
+    // {
+    //   id: 13,
+    //   culture: "Haricots",
+    //   phases: ["Préparation du sol", "Semis", "Désherbage", "Récolte"],
+    //   startPeriod: new Date("2024-04-05"),
+    //   endPeriod: new Date("2024-08-20")
+    // },
+    // {
+    //   id: 14,
+    //   culture: "Céleri",
+    //   phases: ["Semis", "Irrigation", "Entretien", "Récolte"],
+    //   startPeriod: new Date("2024-03-01"),
+    //   endPeriod: new Date("2024-07-15")
+    // },
+    // {
+    //   id: 15,
+    //   culture: "Coriandre",
+    //   phases: ["Préparation du sol", "Semis", "Croissance", "Récolte"],
+    //   startPeriod: new Date("2024-02-10"),
+    //   endPeriod: new Date("2024-05-30")
+    // }
   ]
   
   

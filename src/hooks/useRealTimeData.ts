@@ -92,7 +92,7 @@ const generateWaterData = (count: number): WaterData[] => {
 
 
 const generateCultureData = (): CultureData[] => {
-  const cultures = ["Blé", "Maïs", "Soja", "Tournesol", "Colza"];
+  const cultures = ["Culture A", "Culture B", "Culture C", "Culture D"];
   return cultures.map(name => ({
     name : name ,
     area: Math.floor(Math.random() * 200) + 50 // Surface aléatoire entre 50 et 250

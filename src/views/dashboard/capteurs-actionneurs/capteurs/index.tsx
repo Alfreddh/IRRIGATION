@@ -24,15 +24,20 @@ type TableBodyRowType = Capteur
 
 // Vars
 const rowsData: TableBodyRowType[] = [
+    // {
+    //   id: 1,
+    //   capteur: "Capteur de température",
+    //   type: "Thermocouple"
+    // },
+    // {
+    //   id: 2,
+    //   capteur: "Capteur de pression",
+    //   type: "Manomètre"
+    // },
     {
-      id: 1,
-      capteur: "Capteur de température",
-      type: "Thermocouple"
-    },
-    {
-      id: 2,
-      capteur: "Capteur de pression",
-      type: "Manomètre"
+      id: 4,
+      capteur: "Capteur d'humidité",
+      type: "Capacitif"
     },
     {
       id: 3,
@@ -40,65 +45,60 @@ const rowsData: TableBodyRowType[] = [
       type: "Ultrason"
     },
     {
-      id: 4,
-      capteur: "Capteur d'humidité",
-      type: "Capacitif"
-    },
-    {
       id: 5,
-      capteur: "Capteur de lumière",
-      type: "Photocellule"
+      capteur: "Pompe",
+      type: "Electronique"
     },
     {
       id: 6,
-      capteur: "Capteur de débit",
-      type: "Turbine"
-    },
-    {
-      id: 7,
-      capteur: "Capteur de gaz",
-      type: "Électrochimique"
-    },
-    {
-      id: 8,
-      capteur: "Capteur de proximité",
+      capteur: "Pedimètre",
       type: "Inductif"
     },
-    {
-      id: 9,
-      capteur: "Capteur de mouvement",
-      type: "PIR (Infrarouge passif)"
-    },
-    {
-      id: 10,
-      capteur: "Capteur de pH",
-      type: "Électrode de pH"
-    },
-    {
-      id: 11,
-      capteur: "Capteur de vibration",
-      type: "Accéléromètre"
-    },
-    {
-      id: 12,
-      capteur: "Capteur de force",
-      type: "Jauge de contrainte"
-    },
-    {
-      id: 13,
-      capteur: "Capteur d'oxygène",
-      type: "Zirconium"
-    },
-    {
-      id: 14,
-      capteur: "Capteur de son",
-      type: "Microphone"
-    },
-    {
-      id: 15,
-      capteur: "Capteur de courant",
-      type: "Effet Hall"
-    }
+    // {
+    //   id: 7,
+    //   capteur: "Capteur de gaz",
+    //   type: "Électrochimique"
+    // },
+    // {
+    //   id: 8,
+    //   capteur: "Capteur de proximité",
+    //   type: "Inductif"
+    // },
+    // {
+    //   id: 9,
+    //   capteur: "Capteur de mouvement",
+    //   type: "PIR (Infrarouge passif)"
+    // },
+    // {
+    //   id: 10,
+    //   capteur: "Capteur de pH",
+    //   type: "Électrode de pH"
+    // },
+    // {
+    //   id: 11,
+    //   capteur: "Capteur de vibration",
+    //   type: "Accéléromètre"
+    // },
+    // {
+    //   id: 12,
+    //   capteur: "Capteur de force",
+    //   type: "Jauge de contrainte"
+    // },
+    // {
+    //   id: 13,
+    //   capteur: "Capteur d'oxygène",
+    //   type: "Zirconium"
+    // },
+    // {
+    //   id: 14,
+    //   capteur: "Capteur de son",
+    //   type: "Microphone"
+    // },
+    // {
+    //   id: 15,
+    //   capteur: "Capteur de courant",
+    //   type: "Effet Hall"
+    // }
   ]
   
   

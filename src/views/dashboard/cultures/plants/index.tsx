@@ -31,18 +31,18 @@ const rowsData: TableBodyRowType[] = [
       serre: "Serre A",
       superficie: 500
     },
-    {
-      id: 2,
-      culture: "Concombres",
-      serre: "Serre B",
-      superficie: 300
-    },
-    {
-      id: 3,
-      culture: "Laitue",
-      serre: "Serre A",
-      superficie: 450
-    },
+    // {
+    //   id: 2,
+    //   culture: "Concombres",
+    //   serre: "Serre B",
+    //   superficie: 300
+    // },
+    // {
+    //   id: 3,
+    //   culture: "Laitue",
+    //   serre: "Serre A",
+    //   superficie: 450
+    // },
     {
       id: 4,
       culture: "Poivrons",
@@ -51,70 +51,70 @@ const rowsData: TableBodyRowType[] = [
     },
     {
       id: 5,
-      culture: "Aubergines",
+      culture: "Tomates",
       serre: "Serre D",
       superficie: 350
     },
     {
       id: 6,
-      culture: "Radis",
+      culture: "Tomates",
       serre: "Serre B",
       superficie: 250
     },
     {
       id: 7,
-      culture: "Épinards",
+      culture: "Poivrons",
       serre: "Serre A",
       superficie: 500
     },
-    {
-      id: 8,
-      culture: "Carottes",
-      serre: "Serre C",
-      superficie: 600
-    },
-    {
-      id: 9,
-      culture: "Fraises",
-      serre: "Serre D",
-      superficie: 320
-    },
-    {
-      id: 10,
-      culture: "Basilic",
-      serre: "Serre B",
-      superficie: 180
-    },
-    {
-      id: 11,
-      culture: "Persil",
-      serre: "Serre C",
-      superficie: 200
-    },
-    {
-      id: 12,
-      culture: "Choux",
-      serre: "Serre A",
-      superficie: 480
-    },
-    {
-      id: 13,
-      culture: "Haricots",
-      serre: "Serre D",
-      superficie: 370
-    },
-    {
-      id: 14,
-      culture: "Céleri",
-      serre: "Serre B",
-      superficie: 300
-    },
-    {
-      id: 15,
-      culture: "Coriandre",
-      serre: "Serre C",
-      superficie: 220
-    }
+    // {
+    //   id: 8,
+    //   culture: "Carottes",
+    //   serre: "Serre C",
+    //   superficie: 600
+    // },
+    // {
+    //   id: 9,
+    //   culture: "Fraises",
+    //   serre: "Serre D",
+    //   superficie: 320
+    // },
+    // {
+    //   id: 10,
+    //   culture: "Basilic",
+    //   serre: "Serre B",
+    //   superficie: 180
+    // },
+    // {
+    //   id: 11,
+    //   culture: "Persil",
+    //   serre: "Serre C",
+    //   superficie: 200
+    // },
+    // {
+    //   id: 12,
+    //   culture: "Choux",
+    //   serre: "Serre A",
+    //   superficie: 480
+    // },
+    // {
+    //   id: 13,
+    //   culture: "Haricots",
+    //   serre: "Serre D",
+    //   superficie: 370
+    // },
+    // {
+    //   id: 14,
+    //   culture: "Céleri",
+    //   serre: "Serre B",
+    //   superficie: 300
+    // },
+    // {
+    //   id: 15,
+    //   culture: "Coriandre",
+    //   serre: "Serre C",
+    //   superficie: 220
+    // }
   ]
   
 

@@ -30,46 +30,46 @@ const rowsData: TableBodyRowType[] = [
       type: "Réservoir d'eau",
       capacity: 1000
     },
-    {
-      id: 2,
-      type: "Réservoir de carburant",
-      capacity: 5000
-    },
-    {
-      id: 3,
-      type: "Citerne à lait",
-      capacity: 2000
-    },
-    {
-      id: 4,
-      type: "Réservoir d'huile",
-      capacity: 1500
-    },
-    {
-      id: 5,
-      type: "Réservoir chimique",
-      capacity: 3000
-    },
-    {
-      id: 6,
-      type: "Réservoir d'acide",
-      capacity: 2500
-    },
-    {
-      id: 7,
-      type: "Réservoir à gaz",
-      capacity: 6000
-    },
+    // {
+    //   id: 2,
+    //   type: "Réservoir de fertilisants",
+    //   capacity: 5000
+    // },
+    // {
+    //   id: 3,
+    //   type: "Citerne à lait",
+    //   capacity: 2000
+    // },
+    // {
+    //   id: 4,
+    //   type: "Réservoir d'huile",
+    //   capacity: 1500
+    // },
+    // {
+    //   id: 5,
+    //   type: "Réservoir chimique",
+    //   capacity: 3000
+    // },
+    // {
+    //   id: 6,
+    //   type: "Réservoir d'acide",
+    //   capacity: 2500
+    // },
+    // {
+    //   id: 7,
+    //   type: "Réservoir à gaz",
+    //   capacity: 6000
+    // },
     {
       id: 8,
       type: "Réservoir d'eau potable",
       capacity: 1200
     },
-    {
-      id: 9,
-      type: "Citerne à vin",
-      capacity: 1800
-    },
+    // {
+    //   id: 9,
+    //   type: "Citerne à vin",
+    //   capacity: 1800
+    // },
     {
       id: 10,
       type: "Réservoir à engrais liquide",
@@ -80,26 +80,26 @@ const rowsData: TableBodyRowType[] = [
       type: "Réservoir de collecte de pluie",
       capacity: 800
     },
-    {
-      id: 12,
-      type: "Réservoir de traitement des eaux usées",
-      capacity: 4000
-    },
-    {
-      id: 13,
-      type: "Réservoir d'oxygène liquide",
-      capacity: 7000
-    },
-    {
-      id: 14,
-      type: "Citerne de stockage de sirop",
-      capacity: 2700
-    },
-    {
-      id: 15,
-      type: "Réservoir de biogaz",
-      capacity: 5000
-    }
+    // {
+    //   id: 12,
+    //   type: "Réservoir de traitement des eaux usées",
+    //   capacity: 4000
+    // },
+    // {
+    //   id: 13,
+    //   type: "Réservoir d'oxygène liquide",
+    //   capacity: 7000
+    // },
+    // {
+    //   id: 14,
+    //   type: "Citerne de stockage de sirop",
+    //   capacity: 2700
+    // },
+    // {
+    //   id: 15,
+    //   type: "Réservoir de biogaz",
+    //   capacity: 5000
+    // }
   ]
   
   
