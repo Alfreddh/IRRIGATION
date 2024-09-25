@@ -20,7 +20,7 @@ const DashboardView = () => {
       <Grid container spacing={4} sx={{ mb: 4 }} width={{ xs: '100%', md: '80%' }} >
         <Grid item xs={6} md={4}>
           <DashboardCard
-            title="Tanques"
+            title="Réservoirs"
             color="#4CAF50"
             icon={<WaterDrop  />}
             link="/tanques"

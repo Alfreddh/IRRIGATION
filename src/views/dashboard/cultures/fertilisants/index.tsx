@@ -22,34 +22,34 @@ const fertilizerData: Fertilizer[] = [
       fertilisant: "Nitrate d'Ammonium",
       quantite: 50,
       culture: "Tomates",
-      phase_application_engrais: "Préparation du sol"
+      phase_application_engrais: "Plantule"
     },
     {
       id: 2,
       fertilisant: "Urée",
       quantite: 30,
-      culture: "Maïs",
+      culture: "Tomates",
       phase_application_engrais: "Croissance"
     },
     {
       id: 3,
       fertilisant: "Phosphate de Potassium",
       quantite: 40,
-      culture: "Pommes de terre",
-      phase_application_engrais: "Désherbage"
+      culture: "Poivrons",
+      phase_application_engrais: "Fructification"
     },
     {
       id: 4,
       fertilisant: "Sulfate de Magnésium",
       quantite: 25,
-      culture: "Carottes",
-      phase_application_engrais: "Semis"
+      culture: "Tomates",
+      phase_application_engrais: "Germination"
     },
     {
       id: 5,
       fertilisant: "Engrais organique",
       quantite: 60,
-      culture: "Salades",
+      culture: "Poivrons",
       phase_application_engrais: "Récolte"
     }
   ];
@@ -102,7 +102,8 @@ const FertilizerTable = () => {
       <Box sx={{ display: 'flex', justifyContent: 'flex-start', m:2,  ml:4 }}>
           <Button
             variant="contained"
-            color="info"
+            // color="info"
+            color="primary"
             // startIcon={<AddIcon />}
             onClick={() => setOpenAddModal(true)}
           >

@@ -50,7 +50,7 @@ const AddTanqueModal: React.FC<AddTanqueModalProps> = ({ open, onClose, onAdd })
           <TextField
             fullWidth
             margin="normal"
-            label="Type de Tanque"
+            label="Type de Réservoir"
             name="type"
             value={newTanque.type}
             onChange={handleChange}

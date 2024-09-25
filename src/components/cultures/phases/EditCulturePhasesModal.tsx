@@ -72,6 +72,7 @@ const EditPhaseModal: React.FC<EditPhaseModalProps> = ({ phase, onClose, onSave 
             }));
           }}
           fullWidth
+          disabled
         />
 
         <TextField

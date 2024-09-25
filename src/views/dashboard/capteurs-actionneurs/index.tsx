@@ -31,7 +31,7 @@ const CapteurSettings = ({ tabContentList }: { tabContentList: { [key: string]: 
               iconPosition='start'
               value='capteursSerre'
             />
-            <Tab label='Capteurs|Tanque' icon={<i className='ri-water-flash-fill' />} iconPosition='start' value='capteursTanque' />
+            <Tab label='Capteurs|Réservoirs' icon={<i className='ri-water-flash-fill' />} iconPosition='start' value='capteursTanque' />
           </TabList>
         </Grid>
         <Grid item xs={12}>

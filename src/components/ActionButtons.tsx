@@ -52,7 +52,7 @@ export const ActionButtons: React.FC<ActionButtonsProps> = ({ userId, onEdit, on
     <>
       <ButtonGroup variant="contained" aria-label="outlined primary button group">
         <Button
-          color="info"
+          color="primary"
           onClick={onEdit}
           // startIcon={<EditIcon />}
         >

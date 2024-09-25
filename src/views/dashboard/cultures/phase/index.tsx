@@ -30,21 +30,21 @@ const rowsData: TableBodyRowType[] = [
     {
       id: 1,
       culture: "Tomates",
-      phases: ["Germination", "Croissance végétale", "Récolte", "Floraison", "Fructification"],
+      phases: ["Germination"],
       startPeriod: new Date("2024-03-01"),
       endPeriod: new Date("2024-07-15")
     },
-    // {
-    //   id: 3,
-    //   culture: "Laitue",
-    //   phases: ["Préparation du sol", "Semis", "Arrosage", "Récolte"],
-    //   startPeriod: new Date("2024-02-15"),
-    //   endPeriod: new Date("2024-06-01")
-    // },
+    {
+      id: 3,
+      culture: "Poivrons",
+      phases: ["Récolte"],
+      startPeriod: new Date("2024-02-15"),
+      endPeriod: new Date("2024-06-01")
+    },
     {
       id: 4,
       culture: "Poivrons",
-      phases: ["Semis", "Fertilisation", "Croissance", "Récolte"],
+      phases: ["Plantule"],
       startPeriod: new Date("2024-04-01"),
       endPeriod: new Date("2024-09-10")
     },
@@ -52,7 +52,7 @@ const rowsData: TableBodyRowType[] = [
     {
       id: 2,
       culture: "Tomates",
-      phases: ["Semis", "Irrigation", "Croissance", "Récolte"],
+      phases: ["Fructification"],
       startPeriod: new Date("2024-04-10"),
       endPeriod: new Date("2024-08-20")
     },
@@ -63,13 +63,13 @@ const rowsData: TableBodyRowType[] = [
     //   startPeriod: new Date("2024-03-20"),
     //   endPeriod: new Date("2024-08-05")
     // },
-    // {
-    //   id: 6,
-    //   culture: "Radis",
-    //   phases: ["Semis", "Arrosage", "Croissance", "Récolte"],
-    //   startPeriod: new Date("2024-01-10"),
-    //   endPeriod: new Date("2024-04-25")
-    // },
+    {
+      id: 6,
+      culture: "Poivrons",
+      phases: ["Récolte"],
+      startPeriod: new Date("2024-01-10"),
+      endPeriod: new Date("2024-04-25")
+    },
     // {
     //   id: 7,
     //   culture: "Épinards",
@@ -187,7 +187,9 @@ const PhaseTable = () => {
       <Box sx={{ display: 'flex', justifyContent: 'flex-start', m:2,  ml:4 }}>
           <Button
             variant="contained"
-            color="info"
+            // color="info"
+            color="primary"
+
             // startIcon={<AddIcon />}
             onClick={() => setOpenAddModal(true)}
           >

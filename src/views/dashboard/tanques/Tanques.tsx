@@ -27,24 +27,24 @@ type TableBodyRowType = Tanque
 const rowsData: TableBodyRowType[] = [
     {
       id: 1,
-      type: "Réservoir d'eau",
-      capacity: 1000
+      type: "Réservoir d'eau principal",
+      capacity: 5000
     },
-    // {
-    //   id: 2,
-    //   type: "Réservoir de fertilisants",
-    //   capacity: 5000
-    // },
-    // {
-    //   id: 3,
-    //   type: "Citerne à lait",
-    //   capacity: 2000
-    // },
-    // {
-    //   id: 4,
-    //   type: "Réservoir d'huile",
-    //   capacity: 1500
-    // },
+    {
+      id: 2,
+      type: "Réservoir d'engrais 1",
+      capacity: 200
+    },
+    {
+      id: 3,
+      type: "Réservoir d'engrais 2",
+      capacity: 800
+    },
+    {
+      id: 4,
+      type: "Réservoir de mélange",
+      capacity: 1500
+    },
     // {
     //   id: 5,
     //   type: "Réservoir chimique",
@@ -61,25 +61,26 @@ const rowsData: TableBodyRowType[] = [
     //   capacity: 6000
     // },
     {
+      id: 10,
+      type: "Réservoir à engrais liquide",
+      capacity: 2100
+    },
+    {
       id: 8,
-      type: "Réservoir d'eau potable",
-      capacity: 1200
+      type: "Réservoir d'engrais 3",
+      capacity: 600
     },
     // {
     //   id: 9,
     //   type: "Citerne à vin",
     //   capacity: 1800
     // },
-    {
-      id: 10,
-      type: "Réservoir à engrais liquide",
-      capacity: 2200
-    },
-    {
-      id: 11,
-      type: "Réservoir de collecte de pluie",
-      capacity: 800
-    },
+ 
+    // {
+    //   id: 11,
+    //   type: "Réservoir de collecte de pluie",
+    //   capacity: 800
+    // },
     // {
     //   id: 12,
     //   type: "Réservoir de traitement des eaux usées",
@@ -152,7 +153,9 @@ const TanqueTable = () => {
       <Box sx={{ display: 'flex', justifyContent: 'flex-start', m:2,  ml:4 }}>
           <Button
             variant="contained"
-            color="info"
+            // color="info"
+            color="primary"
+
             // startIcon={<AddIcon />}
             onClick={() => setOpenAddModal(true)}
           >
@@ -165,7 +168,7 @@ const TanqueTable = () => {
         <table className={tableStyles.table}>
           <thead className={tableStyles.tableHead}>
             <tr>
-              <th className={tableStyles.tableHeadCell}>Type de Tanque</th>
+              <th className={tableStyles.tableHeadCell}>Type de Réservoirs</th>
               <th className={tableStyles.tableHeadCell}>Capacité en Litres </th>
               <th className={tableStyles.tableHeadCell}>Action</th>
             </tr>
@@ -173,7 +176,7 @@ const TanqueTable = () => {
           <tbody className={tableStyles.tableBody}>
             {tanques.map((row, index) => (
               <tr key={index} className={tableStyles.tableRow}>
-                <td className={tableStyles.tableCell} data-label="Type de Tanque">
+                <td className={tableStyles.tableCell} data-label="Type de Réservoirs">
                   <div className='flex items-center gap-3'>
                     {/* <CustomAvatar src={row.avatarSrc} size={34} /> */}
                     <div className='flex flex-col'>

@@ -105,7 +105,7 @@ const CapteurSerreTable = () => {
       <Box sx={{ display: 'flex', justifyContent: 'flex-start', m:2,  ml:4 }}>
           <Button
             variant="contained"
-            color="info"
+            color="primary"
             // startIcon={<AddIcon />}
             onClick={() => setOpenAddModal(true)}
           >

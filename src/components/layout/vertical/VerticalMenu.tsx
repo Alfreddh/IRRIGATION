@@ -102,7 +102,7 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
         
           <MenuItem href='/tanques'>
             <i className='ri-water-percent-line' />
-            <span>Tanques</span>
+            <span>Réservoirs</span>
           </MenuItem>
           
         </MenuSection>
